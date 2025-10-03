@@ -8,7 +8,7 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
-    "dev:cf": "wrangler dev --local --port 8787 -c cf/wrangler.ssr.jsonc"
+    "cf-deploy": "wrangler deploy -c dist/rsc/wrangler.json && wrangler deploy"
   },
   "dependencies": {
     "@hiogawa/tiny-rpc": "^0.2.3-pre.18",
