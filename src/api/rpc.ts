@@ -3,6 +3,16 @@ import { z } from "zod";
 import { exposeTinyRpc, httpServerAdapter, validateFn } from "@hiogawa/tiny-rpc";
 import { Hono, type Context, type Next } from "hono";
 import { getContext } from "hono/context-storage";
+import {
+  createTemporaryReferenceSet,
+  decodeAction,
+  decodeFormState,
+  decodeReply,
+  loadServerAction,
+  renderToReadableStream,
+} from "@vitejs/plugin-rsc/rsc";
+import { createElement } from "react";
+// import { createElement } from "react";
 
 let counter = 0;
 const routes = {
@@ -32,6 +42,10 @@ const routes = {
     checkAuth: () => {
         return true;
     //   return request.headers.get("x-auth") === "good";
+    },
+    components: async() => {
+      const comp = renderToReadableStream(createElement("div", null, "Hello from RSC"));
+      return comp.getReader().read();
     },
   };
 export type RpcRoutes = typeof routes;

@@ -17,6 +17,11 @@ export function routes() {
           path: "about",
           lazy: () => import("./about/route"),
         },
+        {
+          id: "tags",
+          path: "tags/:tagId",
+          lazy: () => import("./about/ahihi"),
+        }
       ],
     },
   ] satisfies RSCRouteConfig;

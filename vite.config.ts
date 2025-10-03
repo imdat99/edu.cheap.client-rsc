@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import { cloudflare } from '@cloudflare/vite-plugin'
+import tsConfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -35,6 +36,7 @@ export default defineConfig({
       ],
     }),
     devtoolsJson(),
+    tsConfigPaths(),
   ],
   build: {
     rollupOptions: {
@@ -75,6 +77,9 @@ export default defineConfig({
       optimizeDeps: {
         exclude: ['react-router'],
       },
+      // resolve: {
+      //   conditions: ["react-server"],
+      // }
     },
     rsc: {
       optimizeDeps: {
