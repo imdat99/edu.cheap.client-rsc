@@ -13,6 +13,7 @@ import {
   type unstable_RSCPayload as RSCServerPayload,
   type DataRouter,
 } from "react-router";
+import { SWRConfig } from "swr";
 
 // Create and set the callServer function to support post-hydration server actions.
 setServerCallback(
@@ -32,10 +33,12 @@ createFromReadableStream<RSCServerPayload>(getRSCStream()).then((payload) => {
     hydrateRoot(
       document,
       <StrictMode>
+        <SWRConfig>
         <RSCHydratedRouter
           createFromReadableStream={createFromReadableStream}
           payload={payload}
         />
+        </SWRConfig>
       </StrictMode>,
       {
         // @ts-expect-error - no types for this yet

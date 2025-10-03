@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "edu-cheap-client",
+  "compatibility_date": "2025-08-03",
+  "main": "./src/entry.rsc.tsx",
+  "workers_dev": true,
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+}

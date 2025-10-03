@@ -4,12 +4,15 @@ import {
   isRouteErrorResponse,
   Link,
   NavLink,
+  useLoaderData,
   useNavigation,
   useRouteError,
 } from "react-router";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const navigation = useNavigation();
+  const loaderData = useLoaderData();
+  console.log("Loader Data:", loaderData);
   return (
     <html lang="en">
       <head>

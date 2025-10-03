@@ -12,3 +12,11 @@ export default function Home() {
     </main>
   );
 }
+export const loader = async () => {
+  console.log("Home loader called");
+  return {
+    props: {
+      message: "Hello from the server!",
+    },
+  };
+};

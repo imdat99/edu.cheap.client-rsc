@@ -21,12 +21,11 @@ export async function generateHTML(
       const payload = await getPayload();
       const formState =
         payload.type === "render" ? await payload.formState : undefined;
-
       const bootstrapScriptContent =
         await import.meta.viteRsc.loadBootstrapScriptContent("index");
 
       return await renderHTMLToReadableStream(
-        <RSCStaticRouter getPayload={getPayload} />,
+          <RSCStaticRouter getPayload={getPayload} />,
         {
           bootstrapScriptContent,
           // @ts-expect-error - no types for this yet
@@ -35,4 +34,9 @@ export async function generateHTML(
       );
     },
   });
+}
+export default {
+  fetch(request: Request, env: any) {
+    return generateHTML(request, (request) => env.RSC.fetch(request))
+  },
 }
