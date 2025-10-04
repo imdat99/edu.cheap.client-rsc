@@ -44,8 +44,6 @@ const routes = {
     //   return request.headers.get("x-auth") === "good";
     },
     components: async() => {
-      const comp = renderToReadableStream(createElement("div", null, "Hello from RSC"));
-      return comp.getReader().read();
     },
   };
 export type RpcRoutes = typeof routes;

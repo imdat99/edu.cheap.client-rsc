@@ -12,21 +12,15 @@ const app = new Hono();
 app.use(cors(), etag(), contextStorage());
 app.use(async (c, next) => {
   const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
-  if (c.req.raw.url?.includes("/rpc/") ) {
+  if (c.req.raw.url?.includes("/rpc/") || c.req.raw.url?.includes("/_edu/") ) {
     console.log("rpc request", c.req.raw.url);
-    // return next();
     return fetchFunc(c.req.raw);
   }
-  // return  Promise.resolve({
-    // a: "b"
-  // })
   return next();
-  // const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
-  // return await fetchFunc(c.req.raw);
 });
 app.use(async (c) => {
   const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
-  return await routeRSCServerRequest({
+  return routeRSCServerRequest({
     // The incoming request.
     request: c.req.raw,
     // How to call the React Server.
