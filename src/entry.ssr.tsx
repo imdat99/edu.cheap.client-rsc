@@ -8,6 +8,7 @@ import {
   unstable_routeRSCServerRequest as routeRSCServerRequest,
   unstable_RSCStaticRouter as RSCStaticRouter,
 } from "react-router";
+import { SWRConfig } from "swr";
 const app = new Hono();
 app.use(cors(), etag(), contextStorage());
 app.use(async (c, next) => {
@@ -30,13 +31,16 @@ app.use(async (c) => {
     // Render the router to HTML.
     async renderHTML(getPayload) {
       const payload = await getPayload();
-      const formState =
-        payload.type === "render" ? await payload.formState : undefined;
+      // const routeKey = router.state.matches.at(-1)?.route.id || ''
+      const loadedData = Object.values(payload.type === "render" ? payload.loaderData : {}).filter(Boolean).at(-1) || {};
+      const formState = payload.type === "render" ? await payload.formState : undefined;
       const bootstrapScriptContent =
         await import.meta.viteRsc.loadBootstrapScriptContent("index");
-
+      console.log("payload in renderHTML",  );
       return await renderHTMLToReadableStream(
-          <RSCStaticRouter getPayload={getPayload} />,
+         <SWRConfig value={{ revalidateOnMount: false, provider: () => new Map(), ...loadedData }}>
+            <RSCStaticRouter getPayload={getPayload} />
+          </SWRConfig>,
         {
           bootstrapScriptContent,
           // @ts-expect-error - no types for this yet

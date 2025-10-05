@@ -16,14 +16,10 @@ import {
 import { SWRConfig } from "swr";
 
 // Create and set the callServer function to support post-hydration server actions.
-const customCreateFromReadableStream: <T>(stream: ReadableStream<Uint8Array>, options?: object) => Promise<T> = (body, obj) => {
-  console.log("customCreateFromReadableStream", body, obj);
-  return createFromReadableStream(body, obj);
-}
 
 setServerCallback(
   createCallServer({
-    createFromReadableStream: customCreateFromReadableStream,
+    createFromReadableStream,
     createTemporaryReferenceSet,
     encodeReply,
   }),
@@ -31,18 +27,25 @@ setServerCallback(
 // const Async: FC = () => use(createFromFetch(fetch("/rpc/components")));
 
 // Get and decode the initial server payload
-customCreateFromReadableStream<RSCServerPayload>(getRSCStream()).then((payload) => {
+createFromReadableStream<RSCServerPayload>(getRSCStream()).then((payload) => {
   startTransition(async () => {
-    const formState =
-      payload.type === "render" ? await payload.formState : undefined;
-
+    const formState = payload.type === "render" ? await payload.formState : undefined;
+    const loadedData = Object.values(payload.type === "render" ? payload.loaderData : {}).filter(Boolean).at(-1) || {};
     hydrateRoot(
       document,
       <StrictMode>
-        <SWRConfig>
+        <SWRConfig
+      value={{
+        revalidateOnFocus: false,
+        revalidateIfStale: false,
+        revalidateOnReconnect: true,
+        // provider: localStorageProvider,
+        ...loadedData
+      }}
+    >
           
         <RSCHydratedRouter
-          createFromReadableStream={customCreateFromReadableStream}
+          createFromReadableStream={createFromReadableStream}
           payload={payload}
           routeDiscovery={"lazy"}
           fetch={(r) => {

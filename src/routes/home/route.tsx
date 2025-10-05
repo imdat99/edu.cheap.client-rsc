@@ -1,3 +1,6 @@
+import { client } from "api/rpcclient";
+import { HomeCounter } from "./HomeCounter";
+
 export default function Home() {
   return (
     <main className="mx-auto max-w-screen-xl px-4 py-8 lg:py-12">
@@ -9,14 +12,14 @@ export default function Home() {
           basic routing structure and render components server-side.
         </p>
       </article>
+      <HomeCounter />
     </main>
   );
 }
 export const loader = async () => {
-  console.log("Home loader called");
-  return {
-    props: {
-      message: "Hello from the server!",
+  return import.meta.env.SSR ? {
+    fallback: {
+      count: await client.getCounter(),
     },
-  };
+  } : {};
 };

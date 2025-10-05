@@ -8,21 +8,15 @@ import {
 } from "@vitejs/plugin-rsc/rsc";
 import { unstable_matchRSCServerRequest as matchRSCServerRequest } from "react-router";
 
+import { rpcServer } from "api/rpc";
 import Tag from "Components/Server/Tag.server";
 import { Hono } from "hono";
 import { contextStorage } from "hono/context-storage";
+import {
+  getCookie
+} from 'hono/cookie';
 import { cors } from "hono/cors";
 import { routes } from "./routes/config";
-import { rpcServer } from "api/rpc";
-import {
-  deleteCookie,
-  getCookie,
-  getSignedCookie,
-  setCookie,
-  setSignedCookie,
-  generateCookie,
-  generateSignedCookie,
-} from 'hono/cookie'
 // function fetchServer(request: Request) {
 //   return matchRSCServerRequest({
 //     // Provide the React Server touchpoints.
@@ -91,7 +85,10 @@ app.all(async (c, next) => {
     generateResponse(match, options) {
       return new Response(renderToReadableStream(match.payload, options), {
         status: match.statusCode,
-        headers: match.headers,
+        headers: {
+          ...match.headers,
+          'cache-control': "public, max-age=31536000, immutable",
+        },
       });
     },
   })
