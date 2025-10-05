@@ -7,7 +7,6 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import UnoCSS from "unocss/vite";
 export default defineConfig({
   plugins: [
-    UnoCSS(),
     react({
       babel: {
         plugins: [["babel-plugin-react-compiler"]],
@@ -16,8 +15,8 @@ export default defineConfig({
     rsc({
       entries: {
         client: "./src/entry.browser.tsx",
-        // rsc: "src/entry.rsc.tsx",
-        // ssr: "src/entry.ssr.tsx",
+        rsc: "src/entry.rsc.tsx",
+        ssr: "src/entry.ssr.tsx",
       },
       serverHandler: false,
     }),
@@ -35,6 +34,7 @@ export default defineConfig({
         },
       ],
     }),
+    UnoCSS(),
     devtoolsJson(),
     tsConfigPaths(),
   ],

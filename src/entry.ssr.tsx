@@ -14,7 +14,6 @@ app.use(cors(), etag(), contextStorage());
 app.use(async (c, next) => {
   const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
   if (c.req.raw.url?.includes("/rpc/") || c.req.raw.url?.includes("/_edu/") ) {
-    console.log("rpc request", c.req.raw.url);
     return fetchFunc(c.req.raw);
   }
   return next();

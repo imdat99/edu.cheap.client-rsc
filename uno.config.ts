@@ -9,13 +9,28 @@ import {
 
 export default defineConfig({
   // ...UnoCSS options
+  content: {
+    pipeline: {
+      include: [
+        // the default
+        /\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/,
+        // include js/ts files
+        'src/**/*.{js,ts}',
+      ],
+    },
+  },
   presets: [
-    presetTypography(),
-    presetAttributify(),
+    presetTypography({
+      cssVarPrefix: "eco",
+    }),
+    presetAttributify({
+      prefix: "eco-",
+    }),
     presetWind4({
-      preflights: {
-        reset: true,
-      },
+      // preflights: {
+      //   reset: true,
+      // },
+      variablePrefix: "eco-",
     }), // Using the Wind4 preset
   ],
   transformers: [

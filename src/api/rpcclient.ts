@@ -10,11 +10,9 @@ export const client = proxyTinyRpc<RpcRoutes>({
     pathsForGET: [],
     fetch: async (url, input) => {
       if (import.meta.env.SSR) {
-        console.log("rpcclient fetch", url, input);
         const { getContext } = await import("hono/context-storage");
-        const c = getContext();
-        const urlx = new Request(url)
-        const res = await (c as any).env.RSC.fetch(urlx.url, urlx);
+        const c = getContext<any>();
+        const res = await c.get("fetch")(url);
         return res;
       }
       const res = await fetch(url, {

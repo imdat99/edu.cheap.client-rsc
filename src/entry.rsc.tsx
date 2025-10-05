@@ -52,7 +52,10 @@ const app = new Hono();
 // app.get("/", renderHome);
 // app.use();
 // console.log("rpcServer", );
-app.use(cors(), contextStorage());
+app.use(cors(),async (c, next) => {
+  c.set("fetch", app.request.bind(app));
+  await next();
+}, contextStorage());
 
 // app.all(".rsc/:path*", async (c, next) => {
 // app.all("/rpc/:path*", rpcServer);
