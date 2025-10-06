@@ -13,7 +13,8 @@ const app = new Hono();
 app.use(cors(), etag(), contextStorage());
 app.use(async (c, next) => {
   const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
-  if (c.req.raw.url?.includes("/rpc/") || c.req.raw.url?.includes("/_edu/") ) {
+  const url = c.req.raw.url || '';
+  if (url.includes("/rpc/") || url.includes("/_edu/") ) {
     return fetchFunc(c.req.raw);
   }
   return next();
@@ -35,7 +36,6 @@ app.use(async (c) => {
       const formState = payload.type === "render" ? await payload.formState : undefined;
       const bootstrapScriptContent =
         await import.meta.viteRsc.loadBootstrapScriptContent("index");
-      console.log("payload in renderHTML",  );
       return await renderHTMLToReadableStream(
          <SWRConfig value={{ revalidateOnMount: false, provider: () => new Map(), ...loadedData }}>
             <RSCStaticRouter getPayload={getPayload} />

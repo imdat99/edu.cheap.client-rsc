@@ -17,11 +17,11 @@ async function Com() {
     const { getContext } = await import("hono/context-storage");
     const c = getContext();
     const fetchFunc: fetchFunc = (r, init) => (c as any).env.RSC.fetch(r, init);
-    return fetchFunc("http://a/_edu/components", fetchOpts).then(r => createFromReadableStream(r.body!)).then((r) => ({
+    return fetchFunc("http://a/_edu/components.js", fetchOpts).then(r => createFromReadableStream(r.body!)).then((r) => ({
       default: () => r,
     })) as any;
   } else {
-    return fetch("/_edu/components", fetchOpts).then(r => createFromReadableStream(r.body!)).then((r) => ({
+    return fetch("/_edu/components.js", fetchOpts).then(r => createFromReadableStream(r.body!)).then((r) => ({
       default: () => r,
     }));
   }

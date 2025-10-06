@@ -61,18 +61,19 @@ app.use(cors(),async (c, next) => {
 // app.all("/rpc/:path*", rpcServer);
 
 // });
+app.use(rpcServer);
+app.use(async (c, next) => {
+  if (!c.req.raw.url.includes("/_edu/")) return next();
+  const body = await c.req.json();
+  const cookie = getCookie(c, "Xemdi-movie-theme");
+  console.log("Tag", Tag, cookie, body);
+  return new Response(renderToReadableStream(<Tag {...body} />), {
+    headers: {
+      'Content-Type': 'text/javascript; charset=utf-8',
+    },
+  });
+});
 app.all(async (c, next) => {
-  console.log("c.req.raw.url", c.req.raw.url);
-
-  if (c.req.raw.url.includes("/_edu/")) {
-    const body = await c.req.json();
-    const cookie = getCookie(c, "Xemdi-movie-theme");
-    console.log("Tag", Tag, cookie, body);
-    return new Response(renderToReadableStream(<Tag {...body} />));
-  }
-  if (c.req.raw.url?.includes("/rpc/") ) {
-      return rpcServer(c, next);
-  }
   return matchRSCServerRequest({
     // Provide the React Server touchpoints.
     createTemporaryReferenceSet,
