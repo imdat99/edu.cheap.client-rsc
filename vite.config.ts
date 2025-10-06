@@ -1,6 +1,6 @@
 import rsc from "@vitejs/plugin-rsc/plugin";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin, type Rolldown } from "vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import { cloudflare } from '@cloudflare/vite-plugin'
 import tsConfigPaths from "vite-tsconfig-paths";
@@ -15,10 +15,11 @@ export default defineConfig({
     rsc({
       entries: {
         client: "./src/entry.browser.tsx",
-        rsc: "src/entry.rsc.tsx",
-        ssr: "src/entry.ssr.tsx",
+        // rsc: "src/entry.rsc.tsx",
+        // ssr: "src/entry.ssr.tsx",
       },
       serverHandler: false,
+      copyServerAssetsToClient: (fileName) => fileName.includes(".css"),
     }),
     cloudflare({
       configPath: './cf/wrangler.ssr.jsonc',
@@ -34,9 +35,13 @@ export default defineConfig({
         },
       ],
     }),
-    UnoCSS(),
+    UnoCSS({
+      mode: "per-module",
+      postcss: true
+    }),
     devtoolsJson(),
     tsConfigPaths(),
+    ReplaceCSSInBundlePlugin(),
   ],
   build: {
     rollupOptions: {
@@ -51,11 +56,12 @@ export default defineConfig({
               )
               .replace("%c ArtPlayer %c", "%c XemĐi %c")
               .replace("https://artplayer.org", "https://xemdi.fun")
-              .replaceAll("vite-rsc/importer-resources", "edu.cheap");
+              .replace(/vite-rsc\/importer-resources/g, "edu.cheap.resources")
+              .replace(/precedence: "vite-rsc\/client-reference"/g, "precedence: \"edu.cheap.reference\"")
           },
         },
       ],
-      input: "./src/main.tsx",
+      input: "./src/entry.browser.tsx",
       output: {
         manualChunks: undefined,
         // entryFileNames: `assets/[hash].js`,
@@ -77,9 +83,6 @@ export default defineConfig({
       optimizeDeps: {
         exclude: ['react-router'],
       },
-      // resolve: {
-      //   conditions: ["react-server"],
-      // }
     },
     rsc: {
       optimizeDeps: {
@@ -88,3 +91,44 @@ export default defineConfig({
     },
   },
 });
+
+function ReplaceCSSInBundlePlugin(): Plugin {
+  const seen = new Map<string, string>()
+  return {
+    name: 'vite-plugin-replace-css-bundle',
+    apply: 'build',
+    enforce: 'post',
+    generateBundle(output, bundle) {
+      const outputEnv: string = fnv1a((output as any)?.outputOptions?.dir)
+      const outDir: string = (output as any)?.outputOptions?.dir;
+      if (outDir.endsWith('client')) {
+        this.warn(`Skip processing for client build to avoid conflicts. ${outDir} and ${outputEnv}, ${Object.keys(bundle)} files.`);
+      for (const [fileName, chunk] of Object.entries(bundle)) {
+        if (fileName.endsWith('.css')) {
+          // seen.set(fileName, (seen.get(fileName) || 0) + 1)
+          console.log("fileName", fileName, outputEnv);
+          (chunk as Rolldown.OutputAsset).source = (chunk as Rolldown.OutputAsset).source.toString().replace(/--un-/g, '--eco-');
+          if (seen.get(outputEnv)?.includes(fileName)) {
+            console.warn("seen", seen);
+          this.warn(
+            `[SkipDuplicateAssetsPlugin] Bỏ qua file trùng: "${fileName}" trong "${outDir}" vì đã có trong "${seen.get(outputEnv)}"`
+          )
+          delete bundle[fileName] // xóa file trùng khỏi output
+          continue // bỏ qua, không đổi tên
+        }
+        seen.set(outputEnv, fileName)
+        // seen.add(fileName)
+        }
+      }
+      console.log("seen", seen);
+    }},
+  };
+}
+function fnv1a(str: string): string {
+  let hash = 0x811c9dc5
+  for (let i = 0; i < str.length; i++) {
+    hash ^= str.charCodeAt(i)
+    hash = (hash * 0x01000193) >>> 0
+  }
+  return ('0000000' + hash.toString(16)).slice(-8)
+}

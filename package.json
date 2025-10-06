@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "unocss": "unocss \"src/**/*.{html,vue,js,ts,jsx,tsx}\" -o src/routes/root/style.css -m",
-    "build": "npm run unocss && vite build",
+    "build": "vite build",
     "dev": "cross-env NODE_ENV=development vite",
     "start": "cross-env NODE_ENV=production node server.js",
     "typecheck": "tsc --noEmit",
@@ -14,11 +14,11 @@
   "dependencies": {
     "@hiogawa/tiny-rpc": "^0.2.3-pre.18",
     "@hiogawa/utils": "^1.7.0",
-    "@remix-run/node-fetch-server": "0.9.0",
+    "@remix-run/node-fetch-server": "0.10.0",
     "compression": "^1.8.1",
     "cross-env": "^10.1.0",
     "express": "^5.1.0",
-    "hono": "^4.9.9",
+    "hono": "^4.9.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-router": "7.9.3",
@@ -26,7 +26,7 @@
     "zod": "^4.1.11"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.13.9",
+    "@cloudflare/vite-plugin": "^1.13.10",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.3",
     "@types/node": "^24.6.2",
@@ -40,6 +40,6 @@
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-devtools-json": "1.0.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "wrangler": "^4.41.0"
+    "wrangler": "^4.42.0"
   }
 }

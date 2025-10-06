@@ -21,16 +21,16 @@ export default defineConfig({
   },
   presets: [
     presetTypography({
-      cssVarPrefix: "eco",
+      // cssVarPrefix: "eco",
     }),
     presetAttributify({
-      prefix: "eco-",
+      // prefix: "eco-",
     }),
     presetWind4({
-      // preflights: {
-      //   reset: true,
-      // },
-      variablePrefix: "eco-",
+      preflights: {
+        reset: true,
+      },
+      // variablePrefix: "eco-",
     }), // Using the Wind4 preset
   ],
   transformers: [

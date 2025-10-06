@@ -200,24 +200,24 @@
   dependencies:
     mime "^3.0.0"
 
-"@cloudflare/unenv-preset@2.7.5":
-  version "2.7.5"
-  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-2.7.5.tgz#3de4ba9df091839575e088da474554d180f26257"
-  integrity sha512-eB3UAIVhrvY+CMZrRXS/bAv5kWdNiH+dgwu+1M1S7keDeonxkfKIGVIrhcCLTkcqYlN30MPURPuVFUEzIWuuvg==
+"@cloudflare/unenv-preset@2.7.6":
+  version "2.7.6"
+  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-2.7.6.tgz#36755d140c71b10a0a09f61ff0d1d8ab50d25250"
+  integrity sha512-ykG2nd3trk6jbknRCH69xL3RpGLLbKCrbTbWSOvKEq7s4jH06yLrQlRr/q9IU+dK9p1JY1EXqhFK7VG5KqhzmQ==
 
-"@cloudflare/vite-plugin@^1.13.9":
-  version "1.13.9"
-  resolved "https://registry.yarnpkg.com/@cloudflare/vite-plugin/-/vite-plugin-1.13.9.tgz#81cfe8f47f5ce904d29c299264f358314518c4ec"
-  integrity sha512-XvrHcml/jL8OtN0+61TLeP6DRgwxoR/MC2kuNoNKZ+wpnowAJ1D5BKVE4J8VzX8P4MclS592BoXuRlYboxuuIg==
+"@cloudflare/vite-plugin@^1.13.10":
+  version "1.13.10"
+  resolved "https://registry.yarnpkg.com/@cloudflare/vite-plugin/-/vite-plugin-1.13.10.tgz#8444b2f4cc7a2a80d5f5ff4d6871b4f0cecb1382"
+  integrity sha512-zQaCbzGDAMhjZqXfulpUgBL/D4qsoP1oHVk2LyseKJ47PMq2cHWnbISOi3RONvKxpGyct7ACjA4JEhbFlu5GNQ==
   dependencies:
-    "@cloudflare/unenv-preset" "2.7.5"
+    "@cloudflare/unenv-preset" "2.7.6"
     "@remix-run/node-fetch-server" "^0.8.0"
     get-port "^7.1.0"
     miniflare "4.20251001.0"
     picocolors "^1.1.1"
     tinyglobby "^0.2.12"
     unenv "2.0.0-rc.21"
-    wrangler "4.41.0"
+    wrangler "4.42.0"
     ws "8.18.0"
 
 "@cloudflare/workerd-darwin-64@1.20251001.0":
@@ -640,15 +640,20 @@
   dependencies:
     quansync "^0.2.11"
 
-"@remix-run/node-fetch-server@0.9.0", "@remix-run/node-fetch-server@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/node-fetch-server/-/node-fetch-server-0.9.0.tgz#4f881ad0c9019a37471e98fd25815c2d7f4b12fb"
-  integrity sha512-SoLMv7dbH+njWzXnOY6fI08dFMI5+/dQ+vY3n8RnnbdG7MdJEgiP28Xj/xWlnRnED/aB6SFw56Zop+LbmaaKqA==
+"@remix-run/node-fetch-server@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/node-fetch-server/-/node-fetch-server-0.10.0.tgz#dbff45a94fa83172ee58f13bb983411469cb75f8"
+  integrity sha512-FmYaJHQKEPrT0UFo5KaLTmrm4F6dz5DJBzRY42H93w8FpVg5zKifNWGbH+wYsyExyWVgVrOsifS7IGFtz7HkSA==
 
 "@remix-run/node-fetch-server@^0.8.0":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@remix-run/node-fetch-server/-/node-fetch-server-0.8.1.tgz#094f2324c0c93d530c3addb279247f396727e86a"
   integrity sha512-J1dev372wtJqmqn9U/qbpbZxbJSQrogNN2+Qv1lKlpATpe/WQ9aCZfl/xSb9d2Rgh1IyLSvNxZAXPZxruO6Xig==
+
+"@remix-run/node-fetch-server@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/node-fetch-server/-/node-fetch-server-0.9.0.tgz#4f881ad0c9019a37471e98fd25815c2d7f4b12fb"
+  integrity sha512-SoLMv7dbH+njWzXnOY6fI08dFMI5+/dQ+vY3n8RnnbdG7MdJEgiP28Xj/xWlnRnED/aB6SFw56Zop+LbmaaKqA==
 
 "@rolldown/binding-android-arm64@1.0.0-beta.41":
   version "1.0.0-beta.41"
@@ -1711,10 +1716,10 @@ hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
-hono@^4.9.9:
-  version "4.9.9"
-  resolved "https://registry.yarnpkg.com/hono/-/hono-4.9.9.tgz#a32ee02a5a9c4be8e7f4d48e4e181e738a1d65d7"
-  integrity sha512-Hxw4wT6zjJGZJdkJzAx9PyBdf7ZpxaTSA0NfxqjLghwMrLBX8p33hJBzoETRakF3UJu6OdNQBZAlNSkGqKFukw==
+hono@^4.9.10:
+  version "4.9.10"
+  resolved "https://registry.yarnpkg.com/hono/-/hono-4.9.10.tgz#27ac828dd5ddaf3947e1a207dad9f079d3cf1b12"
+  integrity sha512-AlI15ijFyKTXR7eHo7QK7OR4RoKIedZvBuRjO8iy4zrxvlY5oFCdiRG/V/lFJHCNXJ0k72ATgnyzx8Yqa5arug==
 
 http-errors@2.0.0, http-errors@^2.0.0:
   version "2.0.0"
@@ -2667,13 +2672,13 @@ workerd@1.20251001.0:
     "@cloudflare/workerd-linux-arm64" "1.20251001.0"
     "@cloudflare/workerd-windows-64" "1.20251001.0"
 
-wrangler@4.41.0, wrangler@^4.41.0:
-  version "4.41.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.41.0.tgz#06ee2560613d2dacf030206f88c79171398d2702"
-  integrity sha512-SPiBk/5SgCSIdcWw8EXc8DzqtrjbIU+/n22fQjyz4RnULAqCFJjy84F5crcWnb1J/iPiOzm7mS9bMGFFtpwS/w==
+wrangler@4.42.0, wrangler@^4.42.0:
+  version "4.42.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.42.0.tgz#afee11ca1dd9be095ffefc5532d0168a30bce4c9"
+  integrity sha512-OZXiUSfGD66OVkncDbjZtqrsH6bWPRQMYc6RmMbkzYm/lEvJ8lvARKcqDgEyq8zDAgJAivlMQLyPtKQoVjQ/4g==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.4.0"
-    "@cloudflare/unenv-preset" "2.7.5"
+    "@cloudflare/unenv-preset" "2.7.6"
     blake3-wasm "2.1.5"
     esbuild "0.25.4"
     miniflare "4.20251001.0"

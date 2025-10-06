@@ -17,6 +17,7 @@ import {
 } from 'hono/cookie';
 import { cors } from "hono/cors";
 import { routes } from "./routes/config";
+import { streamText } from "hono/streaming"
 // function fetchServer(request: Request) {
 //   return matchRSCServerRequest({
 //     // Provide the React Server touchpoints.
@@ -65,13 +66,9 @@ app.use(rpcServer);
 app.use(async (c, next) => {
   if (!c.req.raw.url.includes("/_edu/")) return next();
   const body = await c.req.json();
-  const cookie = getCookie(c, "Xemdi-movie-theme");
-  console.log("Tag", Tag, cookie, body);
-  return new Response(renderToReadableStream(<Tag {...body} />), {
-    headers: {
-      'Content-Type': 'text/javascript; charset=utf-8',
-    },
-  });
+  return streamText(c, async (writer) => {
+    await writer.pipe(renderToReadableStream(<Tag {...body} />))
+  })
 });
 app.all(async (c, next) => {
   return matchRSCServerRequest({
@@ -89,10 +86,7 @@ app.all(async (c, next) => {
     generateResponse(match, options) {
       return new Response(renderToReadableStream(match.payload, options), {
         status: match.statusCode,
-        headers: {
-          ...match.headers,
-          'cache-control': "public, max-age=31536000, immutable",
-        },
+        headers: match.headers,
       });
     },
   })
