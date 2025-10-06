@@ -5,17 +5,17 @@ export function routes() {
     {
       id: "root",
       path: "",
-      lazy: () => import("./root/route"),
+      lazy: () => import("./root"),
       children: [
         {
           id: "home",
           index: true,
-          lazy: () => import("./home/route"),
+          lazy: () => import("./home"),
         },
         {
           id: "about",
           path: "about",
-          lazy: () => import("./about/route"),
+          lazy: () => import("./about"),
         },
         {
           id: "tags",

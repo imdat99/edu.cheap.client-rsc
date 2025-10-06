@@ -41,7 +41,8 @@ export default defineConfig({
     }),
     devtoolsJson(),
     tsConfigPaths(),
-    ReplaceCSSInBundlePlugin(),
+    cssTextReplacePlugin(),
+    // ReplaceCSSInBundlePlugin(),
   ],
   build: {
     rollupOptions: {
@@ -91,39 +92,6 @@ export default defineConfig({
     },
   },
 });
-
-function ReplaceCSSInBundlePlugin(): Plugin {
-  const seen = new Map<string, string>()
-  return {
-    name: 'vite-plugin-replace-css-bundle',
-    apply: 'build',
-    enforce: 'post',
-    generateBundle(output, bundle) {
-      const outputEnv: string = fnv1a((output as any)?.outputOptions?.dir)
-      const outDir: string = (output as any)?.outputOptions?.dir;
-      if (outDir.endsWith('client')) {
-        this.warn(`Skip processing for client build to avoid conflicts. ${outDir} and ${outputEnv}, ${Object.keys(bundle)} files.`);
-      for (const [fileName, chunk] of Object.entries(bundle)) {
-        if (fileName.endsWith('.css')) {
-          // seen.set(fileName, (seen.get(fileName) || 0) + 1)
-          console.log("fileName", fileName, outputEnv);
-          (chunk as Rolldown.OutputAsset).source = (chunk as Rolldown.OutputAsset).source.toString().replace(/--un-/g, '--eco-');
-          if (seen.get(outputEnv)?.includes(fileName)) {
-            console.warn("seen", seen);
-          this.warn(
-            `[SkipDuplicateAssetsPlugin] Bỏ qua file trùng: "${fileName}" trong "${outDir}" vì đã có trong "${seen.get(outputEnv)}"`
-          )
-          delete bundle[fileName] // xóa file trùng khỏi output
-          continue // bỏ qua, không đổi tên
-        }
-        seen.set(outputEnv, fileName)
-        // seen.add(fileName)
-        }
-      }
-      console.log("seen", seen);
-    }},
-  };
-}
 function fnv1a(str: string): string {
   let hash = 0x811c9dc5
   for (let i = 0; i < str.length; i++) {
@@ -131,4 +99,23 @@ function fnv1a(str: string): string {
     hash = (hash * 0x01000193) >>> 0
   }
   return ('0000000' + hash.toString(16)).slice(-8)
+}
+
+function cssTextReplacePlugin(): Plugin[] {
+  return [{
+    name: 'css-text-replace', // tên plugin
+    enforce: 'pre',           // chạy trước các plugin khác
+    transform(code, id) {
+      if (!id.endsWith('.css')) return; // chỉ xử lý CSS
+      let newCode = code.replace(/--un-/g, '--eco-');
+      // for (const [search, replace] of Object.entries(replacements)) {
+      //   const regex = new RegExp(search, 'g'); // replace tất cả
+      //   newCode = newCode.replace(regex, replace);
+      // }
+      return {
+        code: newCode,
+        map: null,
+      };
+    },
+  }];
 }
