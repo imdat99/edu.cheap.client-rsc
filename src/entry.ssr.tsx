@@ -1,31 +1,30 @@
 import { createFromReadableStream } from "@vitejs/plugin-rsc/ssr";
 import { renderToReadableStream as renderHTMLToReadableStream } from "react-dom/server.edge";
-import { Hono } from "hono";
-import { contextStorage } from "hono/context-storage";
-import { cors } from "hono/cors";
-import { etag } from "hono/etag";
 import {
   unstable_routeRSCServerRequest as routeRSCServerRequest,
   unstable_RSCStaticRouter as RSCStaticRouter,
 } from "react-router";
 import { SWRConfig } from "swr";
-const app = new Hono();
-app.use(cors(), etag(), contextStorage());
-app.use(async (c, next) => {
-  const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
-  const url = c.req.raw.url || '';
-  if (url.includes("/rpc/") || url.includes("/_edu/") ) {
-    return fetchFunc(c.req.raw);
-  }
-  return next();
-});
-app.use(async (c) => {
-  const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
+// const app = new Hono();
+// app.use(cors(), etag(), contextStorage());
+// app.use(async (c, next) => {
+//   const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
+//   const url = c.req.raw.url || '';
+//   if (url.includes("/rpc/") || url.includes("/_edu/") ) {
+//     return fetchFunc(c.req.raw);
+//   }
+//   return next();
+// });
+// app.use(async (c) => {
+//   const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
+  
+// })
+export function generateHTML(request: Request, fetchServer: (request: Request) => Promise<Response>) {
   return routeRSCServerRequest({
     // The incoming request.
-    request: c.req.raw,
+    request,
     // How to call the React Server.
-    fetchServer: fetchFunc,
+    fetchServer,
     // Provide the React Server touchpoints.
     createFromReadableStream,
     // Render the router to HTML.
@@ -48,8 +47,8 @@ app.use(async (c) => {
       );
     },
   });
-})
-export default app;
+}
+// export default app;
 // export default {
 //   fetch(request: Request, env: any) {
 //     return generateHTML(request, (request) => env.RSC.fetch(request))

@@ -12,33 +12,30 @@ import { rpcServer } from "api/rpc";
 import Tag from "Components/Server/Tag.server";
 import { Hono } from "hono";
 import { contextStorage } from "hono/context-storage";
-import {
-  getCookie
-} from 'hono/cookie';
 import { cors } from "hono/cors";
+import { streamText } from "hono/streaming";
 import { routes } from "./routes/config";
-import { streamText } from "hono/streaming"
-// function fetchServer(request: Request) {
-//   return matchRSCServerRequest({
-//     // Provide the React Server touchpoints.
-//     createTemporaryReferenceSet,
-//     decodeAction,
-//     decodeFormState,
-//     decodeReply,
-//     loadServerAction,
-//     // The incoming request.
-//     request,
-//     // The app routes.
-//     routes: routes(),
-//     // Encode the match with the React Server implementation.
-//     generateResponse(match, options) {
-//       return new Response(renderToReadableStream(match.payload, options), {
-//         status: match.statusCode,
-//         headers: match.headers,
-//       });
-//     },
-//   });
-// }
+function fetchServer(request: Request) {
+  return matchRSCServerRequest({
+    // Provide the React Server touchpoints.
+    createTemporaryReferenceSet,
+    decodeAction,
+    decodeFormState,
+    decodeReply,
+    loadServerAction,
+    // The incoming request.
+    request,
+    // The app routes.
+    routes: routes(),
+    // Encode the match with the React Server implementation.
+    generateResponse(match, options) {
+      return new Response(renderToReadableStream(match.payload, options), {
+        status: match.statusCode,
+        headers: match.headers,
+      });
+    },
+  });
+}
 
 // export default async function handler(request: Request) {
 //   // Import the generateHTML function from the client environment
@@ -71,25 +68,11 @@ app.use(async (c, next) => {
   })
 });
 app.all(async (c, next) => {
-  return matchRSCServerRequest({
-    // Provide the React Server touchpoints.
-    createTemporaryReferenceSet,
-    decodeAction,
-    decodeFormState,
-    decodeReply,
-    loadServerAction,
-    // The incoming request.
-    request: c.req.raw,
-    // The app routes.
-    routes: routes(),
-    // Encode the match with the React Server implementation.
-    generateResponse(match, options) {
-      return new Response(renderToReadableStream(match.payload, options), {
-        status: match.statusCode,
-        headers: match.headers,
-      });
-    },
-  })
+  const ssr = await import.meta.viteRsc.loadModule<
+    typeof import("./entry.ssr")
+  >("ssr", "index");
+
+  return ssr.generateHTML(c.req.raw, fetchServer);
 })
 
 export default app;

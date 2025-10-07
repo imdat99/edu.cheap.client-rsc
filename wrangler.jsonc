@@ -2,10 +2,21 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "edu-cheap-client",
   "compatibility_date": "2025-08-03",
-  "main": "./src/entry.rsc.tsx",
+  "main": "./entry.worker.ts",
   "workers_dev": true,
   "compatibility_flags": [
     "nodejs_compat",
     "nodejs_als"
   ],
+  "vars": {
+    "NODE_ENV": "production"
+  },
+  "assets": {
+		"binding": "ASSETS",
+		"directory": "dist/client",
+		"html_handling": "none"
+	},
+	"observability": {
+		"enabled": true
+	}
 }

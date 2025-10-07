@@ -15,8 +15,8 @@ async function Com() {
   ).then((m) => m.createFromReadableStream);
   if (import.meta.env.SSR) {
     const { getContext } = await import("hono/context-storage");
-    const c = getContext();
-    const fetchFunc: fetchFunc = (r, init) => (c as any).env.RSC.fetch(r, init);
+    const c = getContext<any>();
+    const fetchFunc: fetchFunc = c.get("fetch").bind(c);
     return fetchFunc("http://a/_edu/components.js", fetchOpts).then(r => createFromReadableStream(r.body!)).then((r) => ({
       default: () => r,
     })) as any;
