@@ -55,6 +55,13 @@ export function CheckCSSPlugin(): Plugin {
                 .replace(/clientAction/g, '$cA')
                 .replace(/clientLoader/g, '$rcL')
                 .replace(/className/g, '$cL')
+                .replace(/element/g, '$el')
+                .replace(/matches/g, '$m')
+                .replace(/formState/g, '$fS')
+                .replace(/\$undefined/g, '$u_')
+                // // .replace(/pathname/g, '$pn')
+                .replace(/parentId/g, '$pId')
+                .replace(/patches/g, '$pc')
 
             // let code = (chunk as any).source.toString();
             // if(re.test(code)) {
