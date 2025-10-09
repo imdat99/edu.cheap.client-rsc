@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 
+
 import { Layout as ClientLayout } from "./client";
 // import "./style.css";
 import 'virtual:uno.css';

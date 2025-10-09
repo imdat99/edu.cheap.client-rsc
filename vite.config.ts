@@ -2,15 +2,40 @@ import rsc from "@vitejs/plugin-rsc/plugin";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin, type Rolldown } from "vite";
 import devtoolsJson from "vite-plugin-devtools-json";
-import { cloudflare } from '@cloudflare/vite-plugin'
+import { cloudflare } from "@cloudflare/vite-plugin";
 import tsConfigPaths from "vite-tsconfig-paths";
 import UnoCSS from "unocss/vite";
 import { CheckCSSPlugin, cssTextReplacePlugin } from "./vite.plugin";
+import path from "node:path";
 export default defineConfig({
   plugins: [
     react({
       babel: {
-        plugins: [["babel-plugin-react-compiler"]],
+        presets: [
+          ["@nkzw/babel-preset-fbtee", {
+            fbtCommon: "./common_strings.json",
+            // We can also provide the fbt enum manifest directly as a JS variable
+            // fbtEnumManifest: require('./.enum_manifest.json'),
+            fbtEnumManifest: path.join(__dirname, ".enum_manifest.json"),
+            extraOptions: { __self: true },
+            fbtBase64: true,
+          }],
+        ],
+        plugins: [
+          ["babel-plugin-react-compiler"],
+        //   [
+        //     "babel-plugin-fbt",
+        //     {
+        //       fbtCommonPath: "./common_strings.json",
+        //       // We can also provide the fbt enum manifest directly as a JS variable
+        //       // fbtEnumManifest: require('./.enum_manifest.json'),
+        //       fbtEnumPath: path.join(__dirname, ".enum_manifest.json"),
+        //       extraOptions: { __self: true },
+        //       fbtBase64: true,
+        //     },
+        //   ],
+        //   "babel-plugin-fbt-runtime",
+        ],
       },
     }),
     rsc({
@@ -55,7 +80,10 @@ export default defineConfig({
               .replace("%c ArtPlayer %c", "%c XemĐi %c")
               .replace("https://artplayer.org", "https://xemdi.fun")
               .replace(/vite-rsc\/importer-resources/g, "edu.cheap.resources")
-              .replace(/precedence: "vite-rsc\/client-reference"/g, "precedence: \"edu.cheap.reference\"")
+              .replace(
+                /precedence: "vite-rsc\/client-reference"/g,
+                'precedence: "edu.cheap.reference"'
+              )
               .replace(/--un-/g, "--eco-");
           },
         },
@@ -64,7 +92,7 @@ export default defineConfig({
         manualChunks: undefined,
         // entryFileNames: `assets/[hash].js`,
         chunkFileNames: `assets/[hash].js`,
-        assetFileNames: `assets/[name].[ext]`
+        assetFileNames: `assets/[name].[ext]`,
         // assetFileNames: `assets/[hash].[ext]`
       },
     },

@@ -2,3 +2,6 @@
 node_modules
 .env
 dist
+.enum_manifest.json
+source_strings.json
+src/translations/*

@@ -5,6 +5,11 @@ import {
   unstable_RSCStaticRouter as RSCStaticRouter,
 } from "react-router";
 import { SWRConfig } from "swr";
+// import fbt, { IntlViewerContext, init } from "fbt";
+// import intl from "translatedFbts.json";
+// This will load the translated strings in FBT.
+// init({ translations: intl });
+// IntlViewerContext.locale = "vi_VN"; // or "en_US"
 // import { LanguageDetector, type LanguageDetectorOption } from "remix-i18next/server";
 // const app = new Hono();
 // app.use(cors(), etag(), contextStorage());
