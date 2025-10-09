@@ -15,9 +15,9 @@ export default defineConfig({
     }),
     rsc({
       entries: {
-        client: "src/entry.browser.tsx",
-        rsc: "src/entry.rsc.tsx",
-        ssr: "src/entry.ssr.tsx",
+        client: "src/core/entry.browser.tsx",
+        rsc: "src/core/entry.rsc.tsx",
+        ssr: "src/core/entry.ssr.tsx",
       },
       // serverHandler: false,
     }),

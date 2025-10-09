@@ -1,14 +1,11 @@
-"Use client";
 import { client } from "api/rpcclient";
 import { HomeCounter } from "./HomeCounter";
-import { useTranslation } from "react-i18next";
 
 export default function Home() {
-  const { t } = useTranslation();
   return (
     <main className="mx-auto max-w-screen-xl px-4 py-8 lg:py-12">
       <article className="prose mx-auto">
-        <h1>{t("home.title")}</h1>
+        {/* <h1>{i18n.t("home.title")}</h1> */}
         <p>
           This is a simple example of a React Router application using React
           Server Components (RSC) with Vite. It demonstrates how to set up a

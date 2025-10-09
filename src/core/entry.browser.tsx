@@ -6,7 +6,6 @@ import {
 } from "@vitejs/plugin-rsc/browser";
 import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
-import { I18nextProvider } from "react-i18next";
 import {
   unstable_createCallServer as createCallServer,
   unstable_getRSCStream as getRSCStream,
@@ -15,7 +14,6 @@ import {
   type unstable_RSCPayload as RSCServerPayload,
 } from "react-router";
 import { SWRConfig } from "swr";
-import i18n from "Translation";
 
 // Create and set the callServer function to support post-hydration server actions.
 
@@ -49,7 +47,6 @@ createFromReadableStream<RSCServerPayload>(getRSCStream()).then((payload) => {
               ...loadedData,
             }}
           >
-            <I18nextProvider i18n={i18n}>
             <RSCHydratedRouter
               createFromReadableStream={createFromReadableStream}
               payload={payload}
@@ -59,7 +56,6 @@ createFromReadableStream<RSCServerPayload>(getRSCStream()).then((payload) => {
                 return fetch(r);
               }}
               />
-              </I18nextProvider>
           </SWRConfig>
       </StrictMode>,
       {

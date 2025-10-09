@@ -2,7 +2,6 @@
 
 import { client } from "api/rpcclient";
 import useSWR, { mutate } from "swr";
-
 export const HomeCounter = () => {
     const { data, isLoading } = useSWR("count", client.getCounter, {
     dedupingInterval: 0,

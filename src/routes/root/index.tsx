@@ -4,7 +4,7 @@ import { Layout as ClientLayout } from "./client";
 // import "./style.css";
 import 'virtual:uno.css';
 
-export { ErrorBoundary } from "./client";
+export { ErrorBoundary } from "./ErrorBoundary";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   // This is necessary for the bundler to inject the needed CSS assets.

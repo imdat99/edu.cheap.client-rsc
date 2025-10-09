@@ -14,7 +14,7 @@ import { Hono } from "hono";
 import { contextStorage } from "hono/context-storage";
 import { cors } from "hono/cors";
 import { streamText } from "hono/streaming";
-import { routes } from "./routes/config";
+import { routes } from "routes/config";
 function fetchServer(request: Request) {
   return matchRSCServerRequest({
     // Provide the React Server touchpoints.
@@ -61,6 +61,7 @@ app.use(cors(),async (c, next) => {
 // });
 app.use(rpcServer);
 app.use(async (c, next) => {
+
   if (!c.req.raw.url.includes("/_edu/")) return next();
   const body = await c.req.json();
   return streamText(c, async (writer) => {

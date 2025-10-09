@@ -1,19 +1,12 @@
-"use client";
-
-import { useTranslation } from "react-i18next";
 import {
-  isRouteErrorResponse,
   Link,
   NavLink,
-  useNavigation,
-  useRouteError,
 } from "react-router";
+import RouteLoading from "./RouteLoading";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const navigation = useNavigation();
-  const { i18n } = useTranslation();
   return (
-    <html lang={i18n.language} dir={i18n.dir(i18n.language)}>
+    <html>
       <head>
         <meta charSet="utf-8" />
         <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></link>
@@ -22,7 +15,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="font-sans antialiased">
         <header className="sticky inset-x-0 top-0 z-50 bg-background border-b">
-          <div className=":uno: mx-auto max-w-screen-xl px-4 relative flex h-16 items-center justify-between gap-4 sm:gap-8">
+          <div className=":uno: mx-auto container px-4 relative flex h-16 items-center justify-between gap-4 sm:gap-8">
             <div className="flex items-center gap-4">
               <Link to="/">React Router 🚀</Link>
               <nav>
@@ -45,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   </li>
                 </ul>
               </nav>
-              <div>{navigation.state !== "idle" && <p>Loading...</p>}</div>
+              <RouteLoading />
             </div>
           </div>
         </header>
@@ -55,22 +48,4 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function ErrorBoundary() {
-  const error = useRouteError();
-  let status = 500;
-  let message = "An unexpected error occurred.";
 
-  if (isRouteErrorResponse(error)) {
-    status = error.status;
-    message = status === 404 ? "Page not found." : error.statusText || message;
-  }
-
-  return (
-    <main className="mx-auto max-w-screen-xl px-4 py-8 lg:py-12">
-      <article className="prose mx-auto">
-        <h1>{status}</h1>
-        <p>{message}</p>
-      </article>
-    </main>
-  );
-}
