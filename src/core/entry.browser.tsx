@@ -68,7 +68,7 @@ createFromReadableStream<RSCServerPayload>(getRSCStream()).then((payload) => {
 
 if (import.meta.hot) {
   import.meta.hot.on("rsc:update", () => {
-    (window as unknown as { __router: DataRouter }).__router.revalidate();
+    (window as unknown as { __reactRouterDataRouter: DataRouter }).__reactRouterDataRouter.revalidate();
   });
 }
 // Disable react dev tool on production

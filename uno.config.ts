@@ -41,47 +41,44 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      border: "hsl(214.3 31.8% 91.4%)",
-      input: "hsl(214.3 31.8% 91.4%)",
-      ring: "oklch(0.6276 0.2076 264.51)",
-      background: "oklch(0.98 0 0)",
-      foreground: "oklch(0.18 0 0)",
-      primary: {
-        50: "oklch(0.97 0.02 264.51)",  // rất nhạt
-        100: "oklch(0.90 0.05 264.51)",
-        200: "oklch(0.82 0.10 264.51)",
-        300: "oklch(0.74 0.14 264.51)",
-        400: "oklch(0.68 0.18 264.51)",
-        500: "oklch(0.63 0.21 264.51)",  // gốc bạn đưa
-        600: "oklch(0.56 0.19 264.51)",
-        700: "oklch(0.48 0.16 264.51)",
-        800: "oklch(0.40 0.12 264.51)",
-        900: "oklch(0.30 0.08 264.51)",  // rất đậm
-        DEFAULT: "oklch(0.63 0.21 264.51)",
-        foreground: "hsl(210 40% 98%)",
+        primary: {
+          DEFAULT: "#14a74b",
+          light: "#76da83",
+          active: "#119c45",
+          "active-light": "#aff6b8",
+          dark: "#025c15",
+        },
+        success: {
+          DEFAULT: "#2dc76b",
+          light: "#17c653",
+        },
+        info: {
+          DEFAULT: "#39a6ea",
+          light: "#39c1ea",
+        },
+        danger: {
+          DEFAULT: "#f8285a",
+          light: "#f8285a",
+          active: "#d1214c",
+        },
+        warning: {
+          DEFAULT: "#f6b100",
+          light: "#f6b100",
+        },
+        secondary: {
+          DEFAULT: "#fd7906",
+          light: "#fbb06f",
+          inverse: "#4b5675",
+        },
+        dark: {
+          DEFAULT: "#161f2d",
+          light: "#1e2129",
+        },
       },
-      secondary: {
-        DEFAULT: "hsl(210 40% 96%)",
-        foreground: "hsl(222.2 84% 4.9%)",
+      boxShadow: {
+        "primary-box": "2px 2px 10px #aff6b8",
+        "card-box": "0px 3px 4px 0px #00000008",
       },
-      muted: {
-        DEFAULT: "hsl(210 40% 96%)",
-        foreground: "hsl(215.4 16.3% 46.9%)",
-      },
-      accent: {
-        DEFAULT: "hsl(210 40% 96%)",
-        foreground: "hsl(222.2 84% 4.9%)",
-      },
-
-      destructive: {
-        DEFAULT: "hsl(0 84.2% 60.2%)",
-        foreground: "hsl(210 40% 98%)",
-      },
-      card: {
-        DEFAULT: "hsl(0 0% 100%)",
-        foreground: "hsl(222.2 84% 4.9%)",
-      },
-    },
     radius: {
       none: "0px",
       sm: "0.125rem", // 2px
@@ -112,7 +109,12 @@ export default defineConfig({
         return `
         :root {
           --font-sans: 'Google Sans Text', 'Roboto Flex', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+          --color-primary: #14a74b; --color-danger: #f8285a; --color-info: #39a6ea; --color-success: #2dc76b; --color-warning: #f6b100; --color-primary-light: #76da83; --color-primary-active: #119c45; --color-primary-active-light: #aff6b8; --color-primary-box-shadow: 2px 2px 10px var(--color-primary-active-light); --color-success-light: #17c653; --color-info-light: #39c1ea; --color-danger-light: #f8285a; --color-danger-active: #d1214c; --color-warning-light: #f6b100; --color-dark-light: #1e2129; --color-secondary: #fd7906; --color-secondary-light: #fbb06f; --color-secondary-inverse: #4b5675; --color-primary-dark: #025c15; --color-dark: #161f2d; --color-card-box-shadow: 0px 3px 4px 0px #00000008;--color-black: #000;
+    --color-white: #fff;
         }
+    button,ui-radio {
+        cursor: pointer
+    }
       `;
       },
     },

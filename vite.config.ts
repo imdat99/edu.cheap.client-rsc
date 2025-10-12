@@ -7,20 +7,12 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import UnoCSS from "unocss/vite";
 import { CheckCSSPlugin, cssTextReplacePlugin } from "./vite.plugin";
 import path from "node:path";
+import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
+    // tailwindcss(),
     react({
       babel: {
-        presets: [
-          ["@nkzw/babel-preset-fbtee", {
-            fbtCommon: "./common_strings.json",
-            // We can also provide the fbt enum manifest directly as a JS variable
-            // fbtEnumManifest: require('./.enum_manifest.json'),
-            fbtEnumManifest: path.join(__dirname, ".enum_manifest.json"),
-            extraOptions: { __self: true },
-            fbtBase64: true,
-          }],
-        ],
         plugins: [
           ["babel-plugin-react-compiler"],
         //   [
@@ -100,21 +92,24 @@ export default defineConfig({
     target: ["es2015", "edge88", "firefox78", "chrome87", "safari11"],
     outDir: "dist/rsc",
   },
-  // environments: {
-  //   client: {
-  //     optimizeDeps: {
-  //       include: ['react-router', 'react-router/internal/react-server-client'],
-  //     },
-  //   },
-  //   ssr: {
-  //     optimizeDeps: {
-  //       exclude: ['react-router'],
-  //     },
-  //   },
-  //   rsc: {
-  //     optimizeDeps: {
-  //       exclude: ['react-router'],
-  //     },
-  //   },
-  // },
+  environments: {
+    // client: {
+    //   optimizeDeps: {
+    //     include: ['react-router', 'react-router/internal/react-server-client'],
+    //   },
+    // },
+    ssr: {
+      optimizeDeps: {
+        exclude: ['react-router'],
+      },
+    },
+    rsc: {
+      optimizeDeps: {
+        exclude: ['react-router'],
+      },
+      resolve: {
+        conditions: ["react-server"],
+      }
+    },
+  },
 });
