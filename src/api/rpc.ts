@@ -12,6 +12,7 @@ import {
   renderToReadableStream,
 } from "@vitejs/plugin-rsc/rsc";
 import { createElement } from "react";
+import type { AcmCampaignClient, Campaign } from "Protos/hello";
 // import { createElement } from "react";
 
 let counter = 0;
@@ -45,6 +46,20 @@ const routes = {
     },
     components: async() => {
     },
+    getCampaign: async(id: number) => {
+      const context = getContext();
+      const acmCampaignClient = context.get("acmCampaignClient") as AcmCampaignClient;
+      tinyassert(acmCampaignClient);
+      return new Promise<Campaign>((resolve, reject) => {
+        acmCampaignClient.getCampaignById(id, (err: any, response: Campaign) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(response);
+        });
+      });
+    }
   };
 export type RpcRoutes = typeof routes;
 const endpoint = "/rpc";

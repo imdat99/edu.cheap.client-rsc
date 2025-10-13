@@ -8,8 +8,9 @@ export const HomeCounter = () => {
   });
   const testFn = async () => {
     // await client.checkId("good");
-    await client.incrementCounter({ delta: 1 });
-    mutate("count", undefined, { revalidate: true })
+    // await client.incrementCounter({ delta: 1 });
+    await client.getCampaign(178);
+    // mutate("count", undefined, { revalidate: true })
   }
     return <>
     <div>

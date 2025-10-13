@@ -13,9 +13,11 @@
     "dev:cf": "wrangler dev",
     "cf-deploy": "wrangler deploy -c dist/rsc/wrangler.json && wrangler deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
-    "deploy": "wrangler deploy --minify"
+    "deploy": "wrangler deploy --minify",
+    "gen": "protoc --ts_proto_out=src --ts_proto_opt=esModuleInterop=true,outputServices=grpc-js --proto_path=. Protos/acm_campaign.proto"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.14.0",
     "@hiogawa/tiny-rpc": "^0.2.3-pre.18",
     "@hiogawa/utils": "^1.7.0",
     "clsx": "^2.1.1",
@@ -29,6 +31,7 @@
     "react-router": "7.9.4",
     "swr": "^2.3.6",
     "tailwind-merge": "^3.3.1",
+    "ts-proto": "^2.7.7",
     "zod": "^4.1.12"
   },
   "devDependencies": {

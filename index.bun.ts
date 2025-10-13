@@ -28,7 +28,7 @@ const middlewares: MiddlewareHandler[] = [
 ];
 
 applyMiddlewareToPaths(
-  ["/static/*", "/assets/*", "/locales/*", "/site.webmanifest"],
+  ["/static/*", "/assets/*", "/images/*", "/locales/*", "/site.webmanifest"],
   ...middlewares
 );
 

@@ -1,0 +1,21 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "AcmMessage.AcmCampaign";
+
+message HelloRequest {
+  string name = 1;
+}
+
+message Campaign {
+    int32 id = 1;
+    string name = 2;
+    google.protobuf.Timestamp created_date = 3;
+	int32 owner_workspace_id = 4;
+	google.protobuf.StringValue directory_path = 5;
+}
+
+service AcmCampaign {
+  rpc GetCampaignById (google.protobuf.Int32Value) returns (Campaign) {}
+}
