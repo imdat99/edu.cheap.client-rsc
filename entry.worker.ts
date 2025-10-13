@@ -31,6 +31,7 @@ const middlewares: MiddlewareHandler[] = [
 applyMiddlewareToPaths(["/static/*", "/assets/*", "/locales/*", "/site.webmanifest"], ...middlewares);
 import("./dist/rsc/index.js" as any).then((mod) => mod.default).then(
   (module) => {
+	console.log("module", module)
     app.all("*",...middlewares, async (c) => module.fetch(c.req.raw));
   }
 );

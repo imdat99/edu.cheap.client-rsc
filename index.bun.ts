@@ -35,7 +35,7 @@ applyMiddlewareToPaths(
 app.use("*", compress());
 
 // import server bundle (SSR entry)
-import("./dist/rsc/index.js" as any)
+await import("./dist/rsc/index.js" as any)
   .then((mod) => mod.default)
   .then((module) => {
     app.all("*", async (c) => module.fetch(c.req.raw));

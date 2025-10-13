@@ -70,19 +70,33 @@ export const presetBootstrapBtn = (): Preset => ({
     [
       /^btn$/,
       () => ({
-        'display': 'inline-block',
+        'display': 'inline-flex',
         'font-weight': '500',
         'line-height': '1.5',
         'text-align': 'center',
         'text-decoration': 'none',
         'vertical-align': 'middle',
         'user-select': 'none',
+        'align-items': 'center',
         'border': '1px solid transparent',
         'padding': '0.375rem 0.75rem',
         'font-size': '1rem',
         'border-radius': '0.375rem',
         'transition': 'color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out',
-        'cursor': 'pointer'
+        'cursor': 'pointer',
+        'gap': '.375rem',
+    // "cursor": "pointer",
+    // "border": "1px solid #0000",
+    // "border-radius": ".375rem",
+    // "outline": "none",
+    // "align-items": "center",
+    // "gap": ".375rem",
+    // "height": "2.5rem",
+    // "padding-inline": "1rem",
+    // "font-size": ".8125rem",
+    // "font-weight": 500,
+    // "line-height": 1,
+    // "display": "inline-flex"
       }),
     ],
 
@@ -138,11 +152,21 @@ export const presetBootstrapBtn = (): Preset => ({
       },
     ]
     }],
+    // Size variants
+    [/^btn-(lg|sm)$/, ([, size], {theme}) => {
+      const padding = size === 'lg' ? '0.5rem 1rem' : '0.25rem 0.5rem';
+      const fontSize = size === 'lg' ? '1.125rem' : '0.875rem';
+      const borderRadius = size === 'lg' ? '0.5rem' : '0.25rem';
+      return [{
+        'padding': padding,
+        'font-size': fontSize,
+        'border-radius': borderRadius,
+      },
+    ]
+    }],
+    // Button group
   ],
   shortcuts: [
-    // size modifiers
-    ['btn-lg', 'px-4 py-2 text-[1.125rem] rounded-lg'],
-    ['btn-sm', 'px-2 py-1 text-sm rounded'],
     // ==== Button Group ====
     [
       'btn-group',

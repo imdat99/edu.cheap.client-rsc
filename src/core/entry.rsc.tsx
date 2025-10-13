@@ -80,6 +80,7 @@ app.all(async (c, next) => {
   >("ssr", "index");
 
   return ssr.generateHTML(c.req.raw, fetchServer);
+
 })
 
 export default app;

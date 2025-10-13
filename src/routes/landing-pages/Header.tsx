@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import LayoutNavLink from './LayoutNavLink'
+import LayoutNavLink from '../root/LayoutNavLink'
 
 const RootHeader = () => {
   return (
@@ -44,13 +44,13 @@ const RootHeader = () => {
               />
             </Link>
             <div className="flex-1" data-flux-spacer="" />
-            <div className="max-lg:hidden">
+            <div className="max-lg:hidden mr-4">
               <LayoutNavLink />
             </div>
             <div className="pl-4 pr-4">
               <button
                 type="button"
-                className="btn btn-secondary btn-sm"
+                className="btn btn-secondary"
               >
                 Đăng nhập
               </button>

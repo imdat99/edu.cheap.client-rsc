@@ -139,6 +139,10 @@ export default defineConfig({
   --color-white: #fff;
   --color-light: #f9fafd;
 }
+  :focus {
+        outline-color: var(--color-primary-active);
+        outline-width: 1px
+    }
 button,
 ui-radio {
   cursor: pointer;
@@ -146,6 +150,11 @@ ui-radio {
 @media (width>=96rem) {
   .container {
     padding-inline: calc(var(--spacing) * 8);
+  }
+}
+@media (width < 26rem) {
+  .container {
+    padding-inline: calc(var(--spacing) * 2);
   }
 }
 .container {
@@ -161,6 +170,8 @@ ui-radio {
       "card": "shadow-[var(--color-card-box-shadow)] border border-gray-50 bg-white rounded-xl flex flex-col",
       "app_btn": "relative inline-flex items-center justify-center gap-2 font-medium text-sm h-10 px-4 rounded-lg whitespace-nowrap bg-[var(--color-secondary)] text-[var(--color-white)] hover:bg-[color-mix(in_oklab,_var(--color-secondary),_transparent_10%)] disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none [[data-flux-button-group]_&]:border-r-0 [:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-r-[1px] dark:[:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-r-0 dark:[:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-l-[1px] [:is([data-flux-button-group]>&:not(:first-child),_[data-flux-button-group]_:not(:first-child)>&)]:border-l-[color-mix(in_srgb,var(--color-accent-foreground),transparent_85%)]",
       "img-fluid": "max-w-full h-auto",
+      "glass-effect": "backdrop-blur-sm bg-gray/10 transition-shadow duration-300 will-change-transform border-1 border-white/20 shadow-2xl hover:shadow-xl",
+      "animate-pulse-slow": "animate-[pulse_5s_cubic-bezier(0.4,0,0.6,1)_infinite]",
       // "btn": "cursor-pointer border border-transparent rounded-md outline-none inline-flex align-center gap-1 h-10 px-4 font-medium text-sm items-center",
     }
   ]

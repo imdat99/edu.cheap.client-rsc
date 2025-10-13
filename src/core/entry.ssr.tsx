@@ -25,18 +25,18 @@ import { SWRConfig } from "swr";
 //   const fetchFunc = (request: Request) => (c as any).env.RSC.fetch(request)
 
 // })
-export function generateHTML(
+export async function generateHTML(
   request: Request,
   fetchServer: (request: Request) => Promise<Response>
 ) {
+  const bootstrapScriptContent =
+        await import.meta.viteRsc.loadBootstrapScriptContent("index");
+  // const body = await renderHTMLToReadableStream(<div>Hello</div>);
+  // return new Response(body, { status: 200 });
   return routeRSCServerRequest({
-    // The incoming request.
     request,
-    // How to call the React Server.
     fetchServer,
-    // Provide the React Server touchpoints.
     createFromReadableStream,
-    // Render the router to HTML.
     async renderHTML(getPayload) {
       const payload = await getPayload();
       const loadedData =
@@ -45,8 +45,7 @@ export function generateHTML(
           .at(-1) || {};
       const formState =
         payload.type === "render" ? await payload.formState : undefined;
-      const bootstrapScriptContent =
-        await import.meta.viteRsc.loadBootstrapScriptContent("index");
+      
       return await renderHTMLToReadableStream(
           <SWRConfig
             value={{

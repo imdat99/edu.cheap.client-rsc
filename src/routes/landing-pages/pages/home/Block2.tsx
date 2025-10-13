@@ -1,4 +1,38 @@
+import { cn } from 'lib/utils'
 import React from 'react'
+
+const suggestions = [
+    {
+        title: "Web Development",
+        link: "#",
+        bgColor: "bg-green-100",
+        textColor: "text-green-600"
+    },
+    {
+        title: "Data Science",
+        link: "#",
+        bgColor: "bg-blue-100",
+        textColor: "text-blue-600"
+    },
+    {
+        title: "Graphic Design",
+        link: "#",
+        bgColor: "bg-pink-100",
+        textColor: "text-pink-600"
+    },
+    {
+        title: "Đánh giá năng lực",
+        link: "#",
+        bgColor: "bg-yellow-100",
+        textColor: "text-yellow-600"
+    },
+    {
+        title: "HSA",
+        link: "#",
+        bgColor: "bg-purple-100",
+        textColor: "text-purple-600"
+    }
+]
 
 const Block2 = () => {
     return (
@@ -12,18 +46,18 @@ const Block2 = () => {
                                     <div className="flex flex-col justify-center">
                                         <div>
                                             <div className="text-center  ">
-                                                <h2 className="text-[28px] md:text-[36px] mx-auto">
-                                                    TÌM KIẾM KHOÁ HỌC -{" "}
+                                                <h2 className="text-[28px] md:text-[36px] mx-auto fw-500">
+                                                    THOẢ SỨC HỌC TẬP -{" "}
                                                     <span className="text-primary">
                                                         HOÀN TOÀN MIỄN PHÍ
                                                         <span />
                                                     </span>
                                                 </h2>
                                                 <p className=" mx-auto">
-                                                    Tên miền chuyên nghiệp – Dễ nhớ, dễ tìm kiếm
+                                                    Khám phá hàng trăm khóa học chất lượng, hoàn toàn miễn phí.
                                                 </p>
                                                 <p>
-                                                    Giúp khách hàng nhận diện thương hiệu ngay từ lần đầu tiên!
+                                                    Không cần đăng ký, không cần thanh toán, chỉ cần tinh thần ham học hỏi!
                                                 </p>
                                             </div>
                                             <div className="mt-5 mb-5 max-w-4xl mx-auto">
@@ -34,7 +68,7 @@ const Block2 = () => {
                                                     >
                                                         <input
                                                             type="text"
-                                                            className=":uno: w-full border rounded-lg block disabled:shadow-none dark:shadow-none appearance-none text-base py-1.5 h-12 leading-[1.125rem] pl-3 pr-10 bg-white dark:bg-white/10 dark:disabled:bg-white/[7%] text-zinc-700 disabled:text-zinc-500 placeholder-zinc-400 disabled:placeholder-zinc-400/70 dark:text-zinc-300 dark:disabled:text-zinc-400 dark:placeholder-zinc-400 dark:disabled:placeholder-zinc-500 shadow-xs border-zinc-200 border-b-zinc-300/80 disabled:border-b-zinc-200 dark:border-white/10 dark:disabled:border-white/5"
+                                                            className=":uno: w-full border rounded-lg block disabled:shadow-none appearance-none text-base py-1.5 h-12 leading-[1.125rem] pl-3 pr-10 bg-white text-zinc-700 disabled:text-zinc-500 placeholder-zinc-400 disabled:placeholder-zinc-400/70 shadow-xs border-zinc-200 border-b-zinc-300/80 disabled:border-b-zinc-200"
                                                             placeholder="Nhập tên khoá học, giảng viên, từ khoá..."
                                                             name="sld"
                                                             data-flux-control=""
@@ -98,7 +132,18 @@ const Block2 = () => {
                                             </div>
                                         </div>
                                         <div className="flex items-center justify-center gap-4 flex-wrap  mt-6">
-                                            <span
+                                            <span>
+                                                Phổ biến:
+                                            </span>
+                                            {suggestions.map((item, index) => (
+                                                <button className={cn("px-4 py-1.5 rounded-lg text-sm font-medium transition bg-opacity-80 hover:bg-opacity-100", item.bgColor, item.textColor)} key={index}>
+                                                    {item.title}
+                                                </button>
+                                            ))}
+                                            <span>
+                                                
+                                            </span>
+                                            {/* <span
                                                 role="button"
                                                 className="relative p-2 bg-gray-100 gap-2 rounded-sm border border-gray-200 overflow-hidden dark:border-gray-600 flex justify-center items-center"
                                             >
@@ -167,7 +212,7 @@ const Block2 = () => {
                                                 <span className=" text-gray-800 btn-hover:text-gray-300">
                                                     350,000 đ
                                                 </span>
-                                            </span>
+                                            </span> */}
                                         </div>
                                     </div>
                                 </div>
@@ -175,19 +220,36 @@ const Block2 = () => {
                         </div>
                     </div>
                 </div>
-                <div className="btn-group btn-group-toggle" data-toggle="buttons">
-  <label className="btn btn-primary active">
-    <input type="radio" name="options" id="option1" autoComplete="off" checked /> Active
-  </label>
-  <label className="btn btn-primary">
-    <input type="radio" name="options" id="option2" autoComplete="off" /> Radio
-  </label>
-  <label className="btn btn-primary">
-    <input type="radio" name="options" id="option3" autoComplete="off" /> Radio
-  </label>
-</div>
             </section>
-
+            <section className='pt-20'>
+                <div className='container text-center'>
+                    <h2 className='text-3xl font-semibold mb-4'>Tại sao chọn EduCheap?</h2>
+                    <p className='mb-12 text-gray-600'>Khám phá những lợi ích khi học tập tại EduCheap</p>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+                        <div className='bg-white p-6 rounded-lg shadow hover:shadow-lg transition'>
+                            <div className='mb-4'>
+                                <img src='https://my-next-app.imdat2999.workers.dev/assets/images/quality.svg' alt='Chất lượng hàng đầu' className='mx-auto h-16' />
+                            </div>
+                            <h3 className='text-xl font-semibold mb-2'>Chất lượng hàng đầu</h3>
+                            <p className='text-gray-600'>Khoá học được thiết kế bởi các chuyên gia hàng đầu trong lĩnh vực.</p>
+                        </div>
+                        <div className='bg-white p-6 rounded-lg shadow hover:shadow-lg transition'>
+                            <div className='mb-4'>
+                                <img src='https://my-next-app.imdat2999.workers.dev/assets/images/flexible.svg' alt='Học tập linh hoạt' className='mx-auto h-16' />
+                            </div>
+                            <h3 className='text-xl font-semibold mb-2'>Học tập linh hoạt</h3>
+                            <p className='text-gray-600'>Học mọi lúc, mọi nơi với các khoá học trực tuyến phù hợp với lịch trình của bạn.</p>
+                        </div>
+                        <div className='bg-white p-6 rounded-lg shadow hover:shadow-lg transition'>
+                            <div className='mb-4'>
+                                <img src='https://my-next-app.imdat2999.workers.dev/assets/images/community.svg' alt='Cộng đồng hỗ trợ' className='mx-auto h-16' />
+                            </div>
+                            <h3 className='text-xl font-semibold mb-2'>Cộng đồng hỗ trợ</h3>
+                            <p className='text-gray-600'>Tham gia cộng đồng học viên năng động để trao đổi và học hỏi lẫn nhau.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>                                   
         </>
     )
 }

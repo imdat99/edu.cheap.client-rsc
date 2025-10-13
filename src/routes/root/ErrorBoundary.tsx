@@ -15,11 +15,18 @@ export function ErrorBoundary() {
   }
 
   return (
-    <main className="mx-auto max-w-screen-xl px-4 py-8 lg:py-12">
-      <article className="prose mx-auto">
-        <h1>{status}</h1>
-        <p>{message}</p>
-      </article>
+    <main className="min-h-screen-sm flex items-center justify-center p-4">
+      <div className="max-w-sm w-full space-y-xl">
+        <img src="/assets/images/logo.svg" alt="Xemdi Logo" className="h-10" />
+
+        <p>
+          <b>{status}.</b>{' '}
+          <ins className="text-red-500 decoration-none">{message}.</ins>
+        </p>
+        <p className="text-gray-600">
+          Something went wrong on our end. Please try again.
+        </p>
+      </div>
     </main>
   );
 }

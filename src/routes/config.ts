@@ -8,9 +8,12 @@ export function routes() {
       lazy: () => import("./root"),
       children: [
         {
-          id: "home",
-          index: true,
-          lazy: () => import("./home"),
+          id: "landing-pages",
+          path: "",
+          lazy: () => import("./landing-pages"),
+          children: [
+            { index: true, id: "home", lazy: () => import("./landing-pages/pages/home") }
+          ]
         },
         {
           id: "about",
@@ -24,5 +27,9 @@ export function routes() {
         }
       ],
     },
+    // {
+    //   id: "not-found",
+    //   lazy: () => import("./root/ErrorBoundary").then((mod) => ({ Component: mod.ErrorBoundary })),
+    // }
   ] satisfies RSCRouteConfig;
 }

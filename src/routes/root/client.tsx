@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router";
 import RouteLoading from "./RouteLoading";
 import LayoutNavLink from "./LayoutNavLink";
-import RootHeader from "./Header";
+import RootHeader from "../landing-pages/Header";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +16,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </head>
       <body className=":uno: font-sans antialiased min-h-screen bg-sky-50 xl:text-[16px] text-[14px] text-gray-800 flex flex-col min-h-svh">
-        <RootHeader/>
         {children}
       </body>
     </html>
