@@ -4,7 +4,7 @@ import Block2 from "./Block2";
 export default function Home() {
   return (
     <main className="[grid-area:main] 0 [[data-flux-container]_&]:px-0  relative">
-      <section className="bg-dark py-20 banner-home">
+      <section className="bg-dark pb-20 pt-10 banner-home">
         <div className="container mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
                 <div className="col-span-1">
@@ -18,7 +18,7 @@ export default function Home() {
                     <div className="flex items-center gap-5 flex-wrap">
                         <a href="/cart/hosting-nvme?product_id=2090&amp;period=p5" rel="noreferrer noopener nofollow" target="_blank" className="btn btn-secondary btn-lg">
                             <span className="btn-arrow__text">
-                                Dùng thử miễn phí
+                                Đăng ký ngay
                                 <span className="btn-arrow__icon">
                                     <i className="las la-arrow-right"></i>
                                 </span>
@@ -26,7 +26,7 @@ export default function Home() {
                         </a>
                         <a rel="nofollow" href="#service-area" className="btn btn-outline-primary bg-white/5 dark:bg-white/5 btn-lg transition">
                             <span className="btn-arrow__text">
-                                Dịch vụ của chúng tôi
+                                Danh sách khoá học
                                 <span className="btn-arrow__icon">
                                     <i className="las la-arrow-right"></i>
                                 </span>

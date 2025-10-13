@@ -35,11 +35,11 @@ const RootHeader = () => {
             </button>
             <Link to="/">
               <img
-                className="dark:block hidden max-h-[32px] w-full"
+                className="dark:block hidden max-h-[45px] w-full"
                 src="https://my-next-app.imdat2999.workers.dev/assets/images/file-white.svg"
               />
               <img
-                className="dark:hidden max-h-[32px] w-full"
+                className="dark:hidden max-h-[45px] w-full"
                 src="https://my-next-app.imdat2999.workers.dev/assets/images/file-white.svg"
               />
             </Link>
@@ -50,14 +50,9 @@ const RootHeader = () => {
             <div className="pl-4 pr-4">
               <button
                 type="button"
-                className="btn btn-secondary"
-                data-flux-button="data-flux-button"
-                data-flux-group-target="data-flux-group-target"
-                aria-haspopup="true"
-                aria-controls="lofi-dropdown-a7be98f2ff78c8"
-                aria-expanded="false"
+                className="btn btn-secondary btn-sm"
               >
-                Tài khoản
+                Đăng nhập
               </button>
             </div>
           </div>
