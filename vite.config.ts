@@ -7,7 +7,7 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import UnoCSS from "unocss/vite";
 import { CheckCSSPlugin, cssTextReplacePlugin } from "./vite.plugin";
 import path from "node:path";
-import tailwindcss from '@tailwindcss/vite'
+// import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     // tailwindcss(),

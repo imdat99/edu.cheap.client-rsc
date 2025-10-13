@@ -6,6 +6,7 @@ import {
   transformerCompileClass,
   presetTypography
 } from "unocss";
+import {presetBootstrapBtn} from "./unocss/bootstrap_btn";
 
 export default defineConfig({
   // ...UnoCSS options
@@ -20,6 +21,7 @@ export default defineConfig({
     },
   },
   presets: [
+    presetBootstrapBtn(),
     presetTypography({
       // cssVarPrefix: "eco",
     }),
@@ -108,15 +110,84 @@ export default defineConfig({
       getCSS: (context) => {
         return `
         :root {
-          --font-sans: 'Google Sans Text', 'Roboto Flex', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-          --color-primary: #14a74b; --color-danger: #f8285a; --color-info: #39a6ea; --color-success: #2dc76b; --color-warning: #f6b100; --color-primary-light: #76da83; --color-primary-active: #119c45; --color-primary-active-light: #aff6b8; --color-primary-box-shadow: 2px 2px 10px var(--color-primary-active-light); --color-success-light: #17c653; --color-info-light: #39c1ea; --color-danger-light: #f8285a; --color-danger-active: #d1214c; --color-warning-light: #f6b100; --color-dark-light: #1e2129; --color-secondary: #fd7906; --color-secondary-light: #fbb06f; --color-secondary-inverse: #4b5675; --color-primary-dark: #025c15; --color-dark: #161f2d; --color-card-box-shadow: 0px 3px 4px 0px #00000008;--color-black: #000;
-    --color-white: #fff;
-        }
-    button,ui-radio {
-        cursor: pointer
-    }
+  --font-sans: "Google Sans Text", "Roboto Flex", "Roboto", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --color-primary: #14a74b;
+  --color-primary-light: #76da83;
+  --color-primary-active: #119c45;
+  --color-primary-active-light: #aff6b8;
+  --color-primary-dark: #025c15;
+  --color-primary-box-shadow: 2px 2px 10px var(--color-primary-active-light);
+  --color-secondary: #fd7906;
+  --color-secondary-light: #fbb06f;
+  --color-secondary-inverse: #4b5675;
+  --color-danger: #f8285a;
+  --color-danger-light: #f8285a;
+  --color-danger-active: #d1214c;
+  --color-info: #39a6ea;
+  --color-info-light: #39c1ea;
+  --color-success: #2dc76b;
+  --color-success-light: #17c653;
+  --color-warning: #f6b100;
+  --color-warning-light: #f6b100;
+  --color-dark-light: #1e2129;
+  --color-dark: #161f2d;
+  --color-card-box-shadow: 0px 3px 4px 0px #00000008;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-light: #f9fafd;
+}
+button,
+ui-radio {
+  cursor: pointer;
+}
+@media (width>=96rem) {
+  .container {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+}
+.container {
+  margin-inline: auto;
+}
+
       `;
       },
     },
+  ],
+  shortcuts: [
+    {
+      "card": "shadow-[var(--color-card-box-shadow)] border border-gray-50 bg-white rounded-xl flex flex-col",
+      "app_btn": "relative inline-flex items-center justify-center gap-2 font-medium text-sm h-10 px-4 rounded-lg whitespace-nowrap bg-[var(--color-secondary)] text-[var(--color-white)] hover:bg-[color-mix(in_oklab,_var(--color-secondary),_transparent_10%)] disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none [[data-flux-button-group]_&]:border-r-0 [:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-r-[1px] dark:[:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-r-0 dark:[:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-l-[1px] [:is([data-flux-button-group]>&:not(:first-child),_[data-flux-button-group]_:not(:first-child)>&)]:border-l-[color-mix(in_srgb,var(--color-accent-foreground),transparent_85%)]",
+      "img-fluid": "max-w-full h-auto",
+      // "btn": "cursor-pointer border border-transparent rounded-md outline-none inline-flex align-center gap-1 h-10 px-4 font-medium text-sm items-center",
+    }
   ]
 });
+/*
+.btn {
+cursor: pointer;
+    border: 1px solid #0000;
+    border-radius: .375rem;
+    outline: none;
+    align-items: center;
+    gap: .375rem;
+    height: 2.5rem;
+    padding-inline: 1rem;
+    font-size: .8125rem;
+    font-weight: 500;
+    line-height: 1;
+    display: inline-flex
+}
+*/
+    // box-shadow: var(--color-card-box-shadow);
+    // border-color: var(--color-gray-50);
+    // background-color: var(--color-white);
+    // border-radius: .75rem;
+    // border-top-left-radius: 0.75rem;
+    // border-top-right-radius: 0.75rem;
+    // border-bottom-right-radius: 0.75rem;
+    // border-bottom-left-radius: 0.75rem;
+    // flex-direction: column;
+    // display: flex

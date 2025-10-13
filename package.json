@@ -31,8 +31,6 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.13.12",
     "@hono/bun-compress": "^0.1.0",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.14",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.3",
     "@types/node": "^24.7.2",
@@ -44,7 +42,7 @@
     "tailwindcss": "^4.1.14",
     "typescript": "^5.9.3",
     "unocss": "^66.5.3",
-    "vite": "npm:rolldown-vite@latest",
+    "vite": "^7.1.9",
     "vite-plugin-devtools-json": "1.0.0",
     "vite-tsconfig-paths": "^5.1.4",
     "wrangler": "^4.42.2"
