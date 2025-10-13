@@ -9,10 +9,10 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
                 <div className="col-span-1">
                     <h1 className="text-white mb-4 text-3xl xl:text-5xl font-bold">
-                        Nhanh<span className="text-primary d-inline-block">.</span>Ổn định<span className="text-primary d-inline-block">.</span>Bảo mật
+                        Nhanh<span className="text-primary d-inline-block">, </span>Ổn định<span className="text-primary d-inline-block">, </span>Miễn phí
                     </h1>
                     <p className="text-white text-opacity-75 mb-8 max-w-3xl ">
-                        Tăng tốc website, tối ưu hiệu suất kinh doanh, bứt phá mọi giới hạn - giải pháp lưu trữ toàn diện từ Tino Group đã làm hài lòng <span className="text-success"> 100.000+ khách hàng</span> trong nhiều lĩnh vực khác nhau từ năm 2019 đến nay.  Trải nghiệm ngay dịch vụ của Tino Group nhé!
+                        Tăng tốc website, tối ưu hiệu suất kinh doanh, bứt phá mọi giới hạn - giải pháp lưu trữ toàn diện từ Tino Group đã làm hài lòng <span className="text-success"> 100.000+ khách hàng</span> trong nhiều lĩnh vực khác nhau từ năm 2019 đến nay.  Trải nghiệm ngay nhé!
 
                     </p>
                     <div className="flex items-center gap-5 flex-wrap">

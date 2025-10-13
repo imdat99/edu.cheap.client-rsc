@@ -64,8 +64,8 @@ export default defineConfig({
           active: "#d1214c",
         },
         warning: {
-          DEFAULT: "#f6b100",
-          light: "#f6b100",
+          DEFAULT: "#f0f9ff",
+          light: "#f0f9ff",
         },
         secondary: {
           DEFAULT: "#fd7906",
@@ -130,8 +130,8 @@ export default defineConfig({
   --color-info-light: #39c1ea;
   --color-success: #2dc76b;
   --color-success-light: #17c653;
-  --color-warning: #f6b100;
-  --color-warning-light: #f6b100;
+  --color-warning: #f0f9ff;
+  --color-warning-light: #f0f9ff;
   --color-dark-light: #1e2129;
   --color-dark: #161f2d;
   --color-card-box-shadow: 0px 3px 4px 0px #00000008;

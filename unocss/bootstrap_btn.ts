@@ -104,7 +104,7 @@ export const presetBootstrapBtn = (): Preset => ({
       {
         [symbols.selector]: selector => `${selector}:focus`,
         outline: `0`,
-        "box-shadow": `0 0 0 .25rem color-mix(in srgb, ${color} 25%, black 75%)`,
+        "box-shadow": `0 0 0 .225rem color-mix(in srgb, ${color} 55%, white 15%)`,
       },
       {
         [symbols.selector]: selector => `${selector}:disabled`,

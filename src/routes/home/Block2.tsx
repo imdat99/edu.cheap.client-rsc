@@ -13,9 +13,9 @@ const Block2 = () => {
                                         <div>
                                             <div className="text-center  ">
                                                 <h2 className="text-[28px] md:text-[36px] mx-auto">
-                                                    CHỌN TÊN MIỀN -{" "}
+                                                    TÌM KIẾM KHOÁ HỌC -{" "}
                                                     <span className="text-primary">
-                                                        TẠO KHÁC BIỆT
+                                                        HOÀN TOÀN MIỄN PHÍ
                                                         <span />
                                                     </span>
                                                 </h2>
@@ -34,8 +34,8 @@ const Block2 = () => {
                                                     >
                                                         <input
                                                             type="text"
-                                                            className="w-full border rounded-lg block disabled:shadow-none dark:shadow-none appearance-none text-base py-1.5 h-12 leading-[1.125rem] pl-3 pr-10 bg-white dark:bg-white/10 dark:disabled:bg-white/[7%] text-zinc-700 disabled:text-zinc-500 placeholder-zinc-400 disabled:placeholder-zinc-400/70 dark:text-zinc-300 dark:disabled:text-zinc-400 dark:placeholder-zinc-400 dark:disabled:placeholder-zinc-500 shadow-xs border-zinc-200 border-b-zinc-300/80 disabled:border-b-zinc-200 dark:border-white/10 dark:disabled:border-white/5"
-                                                            placeholder="Nhập tên thương hiệu của bạn"
+                                                            className=":uno: w-full border rounded-lg block disabled:shadow-none dark:shadow-none appearance-none text-base py-1.5 h-12 leading-[1.125rem] pl-3 pr-10 bg-white dark:bg-white/10 dark:disabled:bg-white/[7%] text-zinc-700 disabled:text-zinc-500 placeholder-zinc-400 disabled:placeholder-zinc-400/70 dark:text-zinc-300 dark:disabled:text-zinc-400 dark:placeholder-zinc-400 dark:disabled:placeholder-zinc-500 shadow-xs border-zinc-200 border-b-zinc-300/80 disabled:border-b-zinc-200 dark:border-white/10 dark:disabled:border-white/5"
+                                                            placeholder="Nhập tên khoá học, giảng viên, từ khoá..."
                                                             name="sld"
                                                             data-flux-control=""
                                                             data-flux-group-target=""
@@ -43,7 +43,7 @@ const Block2 = () => {
                                                         <div className="absolute top-0 bottom-0 flex items-center justify-center text-xs text-zinc-400/75 pr-2 right-0">
                                                             <button
                                                                 type="submit"
-                                                                className="relative items-center font-medium justify-center gap-2 whitespace-nowrap disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-8 text-sm rounded-md px-3 inline-flex  bg-[var(--color-accent)] hover:bg-[color-mix(in_oklab,_var(--color-accent),_transparent_10%)] text-[var(--color-accent-foreground)] border border-black/10 dark:border-0 shadow-[inset_0px_1px_var(--color-white/.2)] [[data-flux-button-group]_&]:border-r-0 [:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-r-[1px] dark:[:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-r-0 dark:[:is([data-flux-button-group]>&:last-child,_[data-flux-button-group]_:last-child>&)]:border-l-[1px] [:is([data-flux-button-group]>&:not(:first-child),_[data-flux-button-group]_:not(:first-child)>&)]:border-l-[color-mix(in_srgb,var(--color-accent-foreground),transparent_85%)] *:transition-opacity [&[disabled]>:not([data-flux-loading-indicator])]:opacity-0 [&[disabled]>[data-flux-loading-indicator]]:opacity-100 [&[disabled]]:pointer-events-none lg:px-10"
+                                                                className=":uno: btn btn-primary h-9 px-3 text-sm rounded-md inline-flex items-center justify-center gap-2 disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none"
                                                                 data-flux-button="data-flux-button"
                                                                 data-flux-group-target="data-flux-group-target"
                                                             >
