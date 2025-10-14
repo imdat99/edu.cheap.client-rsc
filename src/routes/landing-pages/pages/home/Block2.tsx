@@ -1,5 +1,6 @@
 import { cn } from 'lib/utils'
 import React from 'react'
+import CarouselSlide from './CarouselSlide'
 
 const suggestions = [
     {
@@ -145,29 +146,8 @@ const Block2 = () => {
                 <div className='container text-center'>
                     <h2 className='text-3xl font-semibold mb-4'>Tại sao chọn EduCheap?</h2>
                     <p className='mb-12 text-gray-600'>Khám phá những lợi ích khi học tập tại EduCheap</p>
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-                        <div className='bg-white p-6 rounded-lg shadow hover:shadow-lg transition'>
-                            <div className='mb-4'>
-                                <img src='https://my-next-app.imdat2999.workers.dev/assets/images/quality.svg' alt='Chất lượng hàng đầu' className='mx-auto h-16' />
-                            </div>
-                            <h3 className='text-xl font-semibold mb-2'>Chất lượng hàng đầu</h3>
-                            <p className='text-gray-600'>Khoá học được thiết kế bởi các chuyên gia hàng đầu trong lĩnh vực.</p>
-                        </div>
-                        <div className='bg-white p-6 rounded-lg shadow hover:shadow-lg transition'>
-                            <div className='mb-4'>
-                                <img src='https://my-next-app.imdat2999.workers.dev/assets/images/flexible.svg' alt='Học tập linh hoạt' className='mx-auto h-16' />
-                            </div>
-                            <h3 className='text-xl font-semibold mb-2'>Học tập linh hoạt</h3>
-                            <p className='text-gray-600'>Học mọi lúc, mọi nơi với các khoá học trực tuyến phù hợp với lịch trình của bạn.</p>
-                        </div>
-                        <div className='bg-white p-6 rounded-lg shadow hover:shadow-lg transition'>
-                            <div className='mb-4'>
-                                <img src='https://my-next-app.imdat2999.workers.dev/assets/images/community.svg' alt='Cộng đồng hỗ trợ' className='mx-auto h-16' />
-                            </div>
-                            <h3 className='text-xl font-semibold mb-2'>Cộng đồng hỗ trợ</h3>
-                            <p className='text-gray-600'>Tham gia cộng đồng học viên năng động để trao đổi và học hỏi lẫn nhau.</p>
-                        </div>
-                    </div>
+                    <CarouselSlide/>
+                    
                 </div>
             </section>                                   
         </>

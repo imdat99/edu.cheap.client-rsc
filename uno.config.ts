@@ -160,6 +160,30 @@ ui-radio {
 .container {
   margin-inline: auto;
 }
+  @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        /* Custom scrollbar */
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .carousel-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
       `;
       },
