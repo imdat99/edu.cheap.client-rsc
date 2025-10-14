@@ -78,7 +78,6 @@ const home = () => {
                 </div>
             </section>
             <Block2 />
-            <HomeCounter />
         </>
     );
 };

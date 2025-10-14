@@ -5,32 +5,22 @@ const suggestions = [
     {
         title: "Web Development",
         link: "#",
-        bgColor: "bg-green-100",
-        textColor: "text-green-600"
     },
     {
         title: "Data Science",
         link: "#",
-        bgColor: "bg-blue-100",
-        textColor: "text-blue-600"
     },
     {
         title: "Graphic Design",
         link: "#",
-        bgColor: "bg-pink-100",
-        textColor: "text-pink-600"
     },
     {
         title: "Đánh giá năng lực",
         link: "#",
-        bgColor: "bg-yellow-100",
-        textColor: "text-yellow-600"
     },
     {
         title: "HSA",
         link: "#",
-        bgColor: "bg-purple-100",
-        textColor: "text-purple-600"
     }
 ]
 
@@ -136,83 +126,13 @@ const Block2 = () => {
                                                 Phổ biến:
                                             </span>
                                             {suggestions.map((item, index) => (
-                                                <button className={cn("px-4 py-1.5 rounded-lg text-sm font-medium transition bg-opacity-80 hover:bg-opacity-100", item.bgColor, item.textColor)} key={index}>
+                                                <button className={cn("px-4 py-1.5 rounded-lg text-sm font-medium transition bg-opacity-80 hover:bg-opacity-100 bg-gray-100 border-gray-200")} key={index}>
                                                     {item.title}
                                                 </button>
                                             ))}
                                             <span>
                                                 
                                             </span>
-                                            {/* <span
-                                                role="button"
-                                                className="relative p-2 bg-gray-100 gap-2 rounded-sm border border-gray-200 overflow-hidden dark:border-gray-600 flex justify-center items-center"
-                                            >
-                                                <img
-                                                    src="https://tino.vn/mytino/assets/media/tlds/vn.svg"
-                                                    alt=".vn"
-                                                    className="w-10 h-6"
-                                                />
-                                                <span className=" text-gray-800 btn-hover:text-gray-300">
-                                                    450,000 đ
-                                                </span>
-                                                <span className="absolute top-0 right-0 w-3 h-3 rounded-bl overflow-hidden">
-                                                    <img src="https://tino.vn/mytino/assets/media/flags/vietnam.svg" alt="" />
-                                                </span>
-                                            </span>
-                                            <span
-                                                role="button"
-                                                className="relative p-2 bg-gray-100 gap-2 rounded-sm border border-gray-200 overflow-hidden dark:border-gray-600 flex justify-center items-center"
-                                            >
-                                                <span className="text-xl font-semibold text-primary h-6">
-                                                    .com.vn
-                                                </span>
-                                                <span className=" text-gray-800 btn-hover:text-gray-300">
-                                                    350,000 đ
-                                                </span>
-                                                <span className="absolute top-0 right-0 w-3 h-3 rounded-bl overflow-hidden">
-                                                    <img src="https://tino.vn/mytino/assets/media/flags/vietnam.svg" alt="" />
-                                                </span>
-                                            </span>
-                                            <span
-                                                role="button"
-                                                className="relative p-2 bg-gray-100 gap-2 rounded-sm border border-gray-200 overflow-hidden dark:border-gray-600 flex justify-center items-center"
-                                            >
-                                                <span className="text-xl font-semibold text-primary h-6">
-                                                    .io.vn
-                                                </span>
-                                                <span className=" text-gray-800 btn-hover:text-gray-300">
-                                                    30,000 đ
-                                                </span>
-                                                <span className="absolute top-0 right-0 w-3 h-3 rounded-bl overflow-hidden">
-                                                    <img src="https://tino.vn/mytino/assets/media/flags/vietnam.svg" alt="" />
-                                                </span>
-                                            </span>
-                                            <span
-                                                role="button"
-                                                className="relative p-2 bg-gray-100 gap-2 rounded-sm border border-gray-200 overflow-hidden dark:border-gray-600 flex justify-center items-center"
-                                            >
-                                                <img
-                                                    src="https://tino.vn/mytino/assets/media/tlds/com.svg"
-                                                    alt=".com"
-                                                    className="w-10 h-6"
-                                                />
-                                                <span className=" text-gray-800 btn-hover:text-gray-300">
-                                                    310,000 đ
-                                                </span>
-                                            </span>
-                                            <span
-                                                role="button"
-                                                className="relative p-2 bg-gray-100 gap-2 rounded-sm border border-gray-200 overflow-hidden dark:border-gray-600 flex justify-center items-center"
-                                            >
-                                                <img
-                                                    src="https://tino.vn/mytino/assets/media/tlds/net.svg"
-                                                    alt=".net"
-                                                    className="w-10 h-6"
-                                                />
-                                                <span className=" text-gray-800 btn-hover:text-gray-300">
-                                                    350,000 đ
-                                                </span>
-                                            </span> */}
                                         </div>
                                     </div>
                                 </div>

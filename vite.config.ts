@@ -1,6 +1,6 @@
 import rsc from "@vitejs/plugin-rsc/plugin";
 import react from "@vitejs/plugin-react";
-import { defineConfig, type Plugin, type Rolldown } from "vite";
+import { defineConfig } from "vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import tsConfigPaths from "vite-tsconfig-paths";
@@ -59,7 +59,7 @@ export default defineConfig({
     CheckCSSPlugin(),
   ],
   build: {
-    rolldownOptions: {
+    rollupOptions: {
       plugins: [
         {
           name: "remove-router-version",
