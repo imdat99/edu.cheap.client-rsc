@@ -15,10 +15,9 @@ import { contextStorage } from "hono/context-storage";
 import { cors } from "hono/cors";
 import { streamText } from "hono/streaming";
 import { routes } from "routes/config";
-import { AcmCampaignClient } from "Protos/acm_campaign";
-import { credentials } from "@grpc/grpc-js";
+// import { AcmCampaignClient } from "Protos/acm_campaign";
+// import { credentials } from "@grpc/grpc-js";
 
-const acmCampaignClient = new AcmCampaignClient("118.70.206.206:32131", credentials.createInsecure());
 
 function fetchServer(request: Request) {
   return matchRSCServerRequest({
@@ -57,7 +56,7 @@ const app = new Hono();
 // console.log("rpcServer", );
 app.use(cors(),async (c, next) => {
   c.set("fetch", app.request.bind(app));
-  c.set("acmCampaignClient", acmCampaignClient);
+  // c.set("acmCampaignClient", acmCampaignClient);
   await next();
 }, contextStorage());
 

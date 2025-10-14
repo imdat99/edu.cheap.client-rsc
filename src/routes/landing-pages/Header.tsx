@@ -1,38 +1,28 @@
+"use client"
 import { Link } from 'react-router'
 import LayoutNavLink from '../root/LayoutNavLink'
+import { useEffect, useRef, useState } from 'react';
+import { cn } from 'lib/utils';
 
 const RootHeader = () => {
+  const headerRef = useRef<HTMLElement | null>(null);
+  const [hasShadow, setHasShadow] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasShadow(window.scrollY > headerRef.current?.offsetHeight!+20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
+    <>
      <header
-          className="[grid-area:header] z-10 min-h-14  bg-dark py-2 !z-[100]"
+          ref={headerRef}
+          className={cn("[grid-area:header] z-10 bg-dark min-h-14 !z-[100] transition-[padding] ease p-0", hasShadow && "bg-transparent pt-2")}
           style={{ position: "sticky", top: 0, maxHeight: "calc(0px + 100vh)" }}
         >
-          <div className="mx-auto w-full h-full [:where(&)]:max-w-7xl flex items-center container">
-            <button
-              type="button"
-              className="relative items-center font-medium justify-center gap-2 whitespace-nowrap disabled:opacity-75 dark:disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none h-10 text-sm rounded-lg w-10 inline-flex -ml-2.5 bg-transparent hover:bg-zinc-800/5 dark:hover:bg-white/15 text-zinc-400 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white     shrink-0 lg:hidden"
-              data-flux-button="data-flux-button"
-              x-data=""
-              x-on:click="document.body.hasAttribute('data-show-stashed-sidebar') ? document.body.removeAttribute('data-show-stashed-sidebar') : document.body.setAttribute('data-show-stashed-sidebar', '')"
-              data-flux-sidebar-toggle="data-flux-sidebar-toggle"
-              aria-label="Toggle sidebar"
-            >
-              <svg
-                className="shrink-0 [:where(&)]:size-5"
-                data-flux-icon=""
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2 6.75A.75.75 0 0 1 2.75 6h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 6.75Zm0 6.5a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
+          <div className="mx-auto rounded-xl backdrop-saturate-200 backdrop-blur-2xl bg-opacity-80 py-2 bg-dark w-full h-full [:where(&)]:max-w-7xl flex items-center container">
             <Link to="/">
               <img
                 className="dark:block hidden max-h-[45px] w-full"
@@ -57,6 +47,7 @@ const RootHeader = () => {
             </div>
           </div>
         </header>
+    </>
   )
 }
 

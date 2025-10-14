@@ -131,9 +131,8 @@ const Block2 = () => {
                                                     {item.title}
                                                 </button>
                                             ))}
-                                            <span>
-                                                
-                                            </span>
+                                                                <CarouselSlide/>
+
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +145,6 @@ const Block2 = () => {
                 <div className='container text-center'>
                     <h2 className='text-3xl font-semibold mb-4'>Tại sao chọn EduCheap?</h2>
                     <p className='mb-12 text-gray-600'>Khám phá những lợi ích khi học tập tại EduCheap</p>
-                    <CarouselSlide/>
                     
                 </div>
             </section>                                   

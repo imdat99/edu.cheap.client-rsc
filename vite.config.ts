@@ -92,24 +92,24 @@ export default defineConfig({
     target: ["es2015", "edge88", "firefox78", "chrome87", "safari11"],
     outDir: "dist/rsc",
   },
-  environments: {
+  // environments: {
     // client: {
     //   optimizeDeps: {
     //     include: ['react-router', 'react-router/internal/react-server-client'],
     //   },
     // },
-    ssr: {
-      optimizeDeps: {
-        exclude: ['react-router'],
-      },
-    },
-    rsc: {
-      optimizeDeps: {
-        exclude: ['react-router'],
-      },
-      resolve: {
-        conditions: ["react-server"],
-      }
-    },
-  },
+    // ssr: {
+    //   optimizeDeps: {
+    //     exclude: ['react-router'],
+    //   },
+    // },
+    // rsc: {
+    //   optimizeDeps: {
+    //     exclude: ['react-router'],
+    //   },
+    //   resolve: {
+    //     conditions: ["react-server"],
+    //   }
+    // },
+  // },
 });

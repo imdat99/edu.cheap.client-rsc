@@ -17,7 +17,7 @@ export function ErrorBoundary() {
   return (
     <main className="min-h-screen-sm flex items-center justify-center p-4">
       <div className="max-w-sm w-full space-y-xl">
-        <img src="/assets/images/logo.svg" alt="Xemdi Logo" className="h-10" />
+        {/* <img src="/assets/images/logo.svg" alt="Xemdi Logo" className="h-10" /> */}
 
         <p>
           <b>{status}.</b>{' '}

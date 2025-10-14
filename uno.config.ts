@@ -7,19 +7,19 @@ import {
   presetTypography
 } from "unocss";
 import {presetBootstrapBtn} from "./unocss/bootstrap_btn";
-
+// import { presetDaisy } from "@ameinhardt/unocss-preset-daisy";
 export default defineConfig({
   // ...UnoCSS options
-  content: {
-    pipeline: {
-      include: [
-        // the default
-        /\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/,
-        // include js/ts files
-        'src/**/*.{js,ts}',
-      ],
-    },
-  },
+  // content: {
+  //   pipeline: {
+  //     include: [
+  //       // the default
+  //       /\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/,
+  //       // include js/ts files
+  //       'src/**/*.{js,ts}',
+  //     ],
+  //   },
+  // },
   presets: [
     presetBootstrapBtn(),
     presetTypography({
@@ -29,11 +29,16 @@ export default defineConfig({
       // prefix: "eco-",
     }),
     presetWind4({
-      preflights: {
-        reset: true,
-      },
-      // variablePrefix: "eco-",
+      // preflights: {
+      //   reset: true,
+      // },
+      // // variablePrefix: "eco-",
     }), // Using the Wind4 preset
+    // presetDaisy({
+    //   styled: false,
+    //   themes: ['light', 'dark']
+    // })
+
   ],
   transformers: [
     transformerVariantGroup(),
@@ -152,9 +157,9 @@ ui-radio {
     padding-inline: calc(var(--spacing) * 8);
   }
 }
-@media (width < 26rem) {
+@media screen and (max-width: 450px) {
   .container {
-    padding-inline: calc(var(--spacing) * 2);
+    padding-inline: calc(var(--spacing) * 4);
   }
 }
 .container {
