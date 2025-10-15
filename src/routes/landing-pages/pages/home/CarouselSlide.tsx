@@ -1,8 +1,10 @@
+"use client"
 import {
   Carousel,
   CarouselContent,
   CarouselItem
 } from "Components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 const slideData = [
   {
     title: "Web Development",
@@ -79,7 +81,7 @@ const buildStype = (background: string) => {
 const CarouselSlide = () => {
   return (
     <>
-      <Carousel className="w-full md:p-6">
+      <Carousel className="w-full md:p-6" plugins={[Autoplay()]} opts={{ loop: true }} orientation="horizontal">
         <CarouselContent className="-ml-6">
           {slideData.map((slide, index) => (
             <CarouselItem key={index} className="pl-6 md:basis-1/3 lg:basis-1/5">
