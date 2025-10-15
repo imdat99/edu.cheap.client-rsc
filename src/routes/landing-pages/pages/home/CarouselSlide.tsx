@@ -1,91 +1,93 @@
-"use client";
-import React from 'react'
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "Components/ui/carousel"
-import { cn } from 'lib/utils';
+  CarouselItem
+} from "Components/ui/carousel";
 const slideData = [
   {
     title: "Web Development",
     description: "Xây dựng website chuyên nghiệp với công nghệ hiện đại",
-    price: "5.000.000₫",
+    price: "50",
     icon: "fas fa-laptop-code",
-    background: "from-purple-500 to-pink-500",
+    background: "#667eea,#764ba2",
+    tag: "Phổ biến"
   },
   {
     title: "Mobile App",
     description: "Phát triển ứng dụng di động iOS và Android",
-    price: "8.000.000₫",
     icon: "fas fa-mobile-alt",
-    background: "from-blue-500 to-cyan-500",
+    background: "#3b82f6,#06b6d4",
+    tag: "Mới"
   },
   {
     title: "Digital Marketing",
     description: "Chiến dịch marketing hiệu quả cho doanh nghiệp",
-    price: "3.500.000₫",
     icon: "fas fa-chart-line",
-    background: "from-green-500 to-teal-500",
+    background: "#34d399,#2dd4bf",
+    tag: "Hot"
   },
   {
     title: "UI/UX Design",
     description: "Thiết kế giao diện người dùng hiện đại, thân thiện",
-    price: "4.500.000₫",
     icon: "fas fa-paint-brush",
-    background: "from-orange-500 to-red-500",
+    background: "#f97316,#ef4444",
+    tag: "Yêu thích"
   },
   {
     title: "Database Design",
     description: "Thiết kế và tối ưu hóa cơ sở dữ liệu hiệu quả",
-    price: "6.000.000₫",
     icon: "fas fa-database",
-    background: "from-indigo-500 to-purple-500",
+    background: "#4f46e5,#7c3aed",
+    tag: "Tiêu chuẩn"
   },
   {
     title: "Cyber Security",
     description: "Bảo mật hệ thống và dữ liệu doanh nghiệp",
-    price: "10.000.000₫",
     icon: "fas fa-shield-alt",
-    background: "from-pink-500 to-rose-500",
+    background: "#ec4899,#be185d",
+    tag: "Quan trọng"
   },
   {
     title: "AI & Machine Learning",
     description: "Giải pháp trí tuệ nhân tạo và học máy",
-    price: "12.000.000₫",
     icon: "fas fa-robot",
-    background: "from-teal-500 to-blue-500",
+    // background: "teal-500,blue-500",
+    background: "#4fd1c5,#2b6cb0",
+    tag: "Công nghệ"
   },
   {
     title: "Cloud Computing",
     description: "Giải pháp điện toán đám mây cho doanh nghiệp",
-    price: "7.500.000₫",
     icon: "fas fa-cloud",
-    background: "from-yellow-500 to-orange-500",
+    background: "#fbbf24,#f97316",
+    tag: "Linh hoạt"
   },
   {
     title: "DevOps Solution",
     description: "Tối ưu hóa quy trình phát triển và triển khai",
-    price: "9.000.000₫",
     icon: "fas fa-cogs",
-    background: "from-gray-700 to-gray-900",
+    background: "#374151,#1f2937",
+    tag: "Hiệu quả"
   }
 ]
-
+const buildStype = (background: string) => {
+  const [from, to] = background.split(",");
+  return {
+    "background": `linear-gradient(135deg, ${from} 0%, ${to} 100%)`
+  }
+}
 const CarouselSlide = () => {
   return (
     <>
       <Carousel className="w-full md:p-6">
         <CarouselContent className="-ml-6">
           {slideData.map((slide, index) => (
-            <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3 ">
-              <div className={cn(":uno: min-h-[230px] flex flex-col bg-gradient-to-br rounded-xl overflow-hidden p-6 text-white", slide.background)}>
+            <CarouselItem key={index} className="pl-6 md:basis-1/3 lg:basis-1/5">
+              <div className=":uno: min-h-[230px] flex flex-col select-none rounded-xl overflow-hidden p-6 text-white h-full" style={buildStype(slide.background)}>
                 <div className="flex items-center justify-between mb-4">
-                  <i className="fas fa-shield-alt text-3xl" />
+                  <i className={`${slide.icon} text-3xl`} />
                   <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
-                    Security
+                    {slide.tag}
                   </span>
                 </div>
                 <div className='flex-1'>
@@ -95,9 +97,8 @@ const CarouselSlide = () => {
                   </p>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold">{slide.price}</span>
                   <button className="bg-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition" style={{
-                    color: `var(${slide.background.split(" ")?.at(0)?.replace("from", "--colors")})`
+                    color: slide.background.split(",")?.at(1)
                   }}>
                     Xem chi tiết
                   </button>

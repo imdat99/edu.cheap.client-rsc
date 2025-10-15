@@ -14,7 +14,7 @@ import {
   type unstable_RSCPayload as RSCServerPayload,
 } from "react-router";
 import { SWRConfig } from "swr";
-
+const iconHref="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 // Create and set the callServer function to support post-hydration server actions.
 
 setServerCallback(
@@ -29,6 +29,12 @@ setServerCallback(
 // Get and decode the initial server payload
 createFromReadableStream<RSCServerPayload>(getRSCStream()).then((payload) => {
   startTransition(async () => {
+    const linkIcon = document.createElement("link");
+    Object.assign(linkIcon, {
+      rel: "stylesheet",
+      href: iconHref
+    });
+    document.head.appendChild(linkIcon);
     const formState =
       payload.type === "render" ? await payload.formState : undefined;
     const loadedData =
