@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import Block2 from "./Block2";
 import { HomeCounter } from "./HomeCounter";
 import { ArrowRight, ChartLine, DollarSign } from "lucide-react";
-import CarouselSlide from "./CarouselSlide";
 
 const home = () => {
     return (

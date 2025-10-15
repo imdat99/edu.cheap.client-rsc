@@ -97,7 +97,7 @@ const CarouselSlide = () => {
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold">{slide.price}</span>
                   <button className="bg-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition" style={{
-                    color: `var(${slide.background.split(" ")[0].replace("from", "--colors")})`
+                    color: `var(${slide.background.split(" ")?.at(0)?.replace("from", "--colors")})`
                   }}>
                     Xem chi tiết
                   </button>

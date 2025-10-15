@@ -23,7 +23,7 @@ const RootHeader = () => {
           style={{ position: "sticky", top: 0, maxHeight: "calc(0px + 100vh)" }}
         >
           <div className="mx-auto rounded-xl backdrop-saturate-200 backdrop-blur-2xl bg-opacity-80 py-2 bg-dark w-full h-full [:where(&)]:max-w-7xl flex items-center container">
-            <Link to="/">
+            <Link to="/" className='pl-4 pr-4 md:p-0'>
               <img
                 className="dark:block hidden max-h-[45px] w-full"
                 src="https://my-next-app.imdat2999.workers.dev/assets/images/file-white.svg"
