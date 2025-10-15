@@ -1,7 +1,6 @@
 import { cn } from 'lib/utils'
-import React, { lazy, Suspense } from 'react'
 
-const CarouselSlide = lazy(() =>  import('./CarouselSlide'))
+// const CarouselSlide = lazy(() =>  import('./CarouselSlide'))
 
 const suggestions = [
     {
@@ -132,9 +131,9 @@ const Block2 = () => {
                                                     {item.title}
                                                 </button>
                                             ))}
-                                            <Suspense fallback={<div>Loading...</div>}>
+                                            {/* <Suspense fallback={<div>Loading...</div>}>
                                                 <CarouselSlide />
-                                            </Suspense>
+                                            </Suspense> */}
                                         </div>
                                     </div>
                                 </div>

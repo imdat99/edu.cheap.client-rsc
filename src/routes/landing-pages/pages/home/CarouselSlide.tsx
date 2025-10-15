@@ -11,42 +11,36 @@ const slideData = [
     description: "Xây dựng website chuyên nghiệp với công nghệ hiện đại",
     price: "50",
     icon: "fas fa-laptop-code",
-    background: "#667eea,#764ba2",
     tag: "Phổ biến"
   },
   {
     title: "Mobile App",
     description: "Phát triển ứng dụng di động iOS và Android",
     icon: "fas fa-mobile-alt",
-    background: "#3b82f6,#06b6d4",
     tag: "Mới"
   },
   {
     title: "Digital Marketing",
     description: "Chiến dịch marketing hiệu quả cho doanh nghiệp",
     icon: "fas fa-chart-line",
-    background: "#34d399,#2dd4bf",
     tag: "Hot"
   },
   {
     title: "UI/UX Design",
     description: "Thiết kế giao diện người dùng hiện đại, thân thiện",
     icon: "fas fa-paint-brush",
-    background: "#f97316,#ef4444",
     tag: "Yêu thích"
   },
   {
     title: "Database Design",
     description: "Thiết kế và tối ưu hóa cơ sở dữ liệu hiệu quả",
     icon: "fas fa-database",
-    background: "#4f46e5,#7c3aed",
     tag: "Tiêu chuẩn"
   },
   {
     title: "Cyber Security",
     description: "Bảo mật hệ thống và dữ liệu doanh nghiệp",
     icon: "fas fa-shield-alt",
-    background: "#ec4899,#be185d",
     tag: "Quan trọng"
   },
   {
@@ -54,21 +48,18 @@ const slideData = [
     description: "Giải pháp trí tuệ nhân tạo và học máy",
     icon: "fas fa-robot",
     // background: "teal-500,blue-500",
-    background: "#4fd1c5,#2b6cb0",
     tag: "Công nghệ"
   },
   {
     title: "Cloud Computing",
     description: "Giải pháp điện toán đám mây cho doanh nghiệp",
     icon: "fas fa-cloud",
-    background: "#fbbf24,#f97316",
     tag: "Linh hoạt"
   },
   {
     title: "DevOps Solution",
     description: "Tối ưu hóa quy trình phát triển và triển khai",
     icon: "fas fa-cogs",
-    background: "#374151,#1f2937",
     tag: "Hiệu quả"
   }
 ]
@@ -85,7 +76,7 @@ const CarouselSlide = () => {
         <CarouselContent className="-ml-6">
           {slideData.map((slide, index) => (
             <CarouselItem key={index} className="pl-6 md:basis-1/3 lg:basis-1/5">
-              <div className=":uno: min-h-[230px] flex flex-col select-none rounded-xl overflow-hidden p-6 text-white h-full" style={buildStype(slide.background)}>
+              <div className=":uno: min-h-[230px] flex flex-col select-none rounded-xl overflow-hidden p-6 text-white h-full bg-info-light">
                 <div className="flex items-center justify-between mb-4">
                   <i className={`${slide.icon} text-3xl`} />
                   <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
@@ -99,9 +90,7 @@ const CarouselSlide = () => {
                   </p>
                 </div>
                 <div className="flex items-center justify-between">
-                  <button className="bg-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition" style={{
-                    color: slide.background.split(",")?.at(1)
-                  }}>
+                  <button className="bg-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition text-secondary">
                     Xem chi tiết
                   </button>
                 </div>
