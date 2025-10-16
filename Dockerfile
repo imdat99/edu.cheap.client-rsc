@@ -1,5 +1,5 @@
 # ---------- Builder stage ----------
-FROM oven/bun:1.3-alpine AS builder
+FROM oven/bun:1.2.23-alpine AS builder
 
 WORKDIR /app
 
@@ -21,20 +21,21 @@ RUN bun build index.bun.ts --target bun --outdir dist --minify
 
 
 # ---------- Production stage ----------
-FROM oven/bun:1.3-alpine AS production
+FROM oven/bun:1.2.23-alpine AS production
 
 WORKDIR /app
 
 # Copy built files
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/index.bun.ts ./index.bun.ts
 
 ENV NODE_ENV=production
 # Expose port
 EXPOSE 3000
 
 # Optional health check
-# HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-#   CMD wget -qO- http://localhost:3000/ || exit 1
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget -qO- http://localhost:3000/ || exit 1
 
 # Run Bun with fallback install (auto resolves missing deps)
 CMD [ "bun", "dist/index.bun" ]
