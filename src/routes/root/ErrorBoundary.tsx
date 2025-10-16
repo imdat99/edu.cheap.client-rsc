@@ -8,7 +8,6 @@ export function ErrorBoundary() {
   let status = 500;
   let message = "An unexpected error occurred.";
 
-  console.log("error", error);
   if (isRouteErrorResponse(error)) {
     status = error.status;
     message = status === 404 ? "Page not found." : error.statusText || message;

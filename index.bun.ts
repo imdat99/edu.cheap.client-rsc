@@ -35,11 +35,14 @@ applyMiddlewareToPaths(
 app.use("*", compress());
 
 // import server bundle (SSR entry)
-await import("./dist/rsc/index.js" as any)
-  .then((mod) => mod.default)
-  .then((module) => {
-    app.all("*", async (c) => module.fetch(c.req.raw));
-  });
+const module = await import("./dist/rsc/index.js" as any).then((mod) => mod.default);
+app.use(async (c) => module.fetch(c.req.raw));
+// await import("./dist/rsc/index.js" as any)
+//   .then((mod) => mod.default)
+//   .then((module) => {
+//     app.all("*", async (c) => module.fetch(c.req.raw));
+//     console.log("module loaded", module);
+//   });
 
 console.log("Listening on http://localhost:3000");
 export default { 
